@@ -14,9 +14,10 @@ const Hero = () => {
                       <div className="space-y-4 flex-1 sm:text-center lg:text-left">
                           <h1 className="text-black font-bold text-4xl xl:text-5xl">
                               One page Template for <br/>
-                              <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">
-                                Digital agency
-                              </span>
+                              <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent [background-clip:text] [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">
+  Digital agency
+</span>
+
 
                           </h1>
                           <p className="text-gray-500 max-w-xl leading-relaxed sm:mx-auto lg:ml-0">

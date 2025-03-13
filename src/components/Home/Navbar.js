@@ -95,9 +95,9 @@ const Navbar = () => {
         </ul>
 
         {/* Login Button - Desktop */}
-        <a href="#" className="hidden md:block bg-gradient-to-r from-green-400 to-green-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">
+        <button className="hidden md:block bg-gradient-to-r from-green-400 to-green-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">
           Contact Us
-        </a>
+        </button>
 
         {/* Mobile Menu Button */}
         <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden text-gray-800 text-2xl">
@@ -145,10 +145,11 @@ const Navbar = () => {
             </li>
           </ul>
 
-          {/* Login Button - Mobile */}
-          <a href="#" className="block mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white text-center py-2 rounded-md hover:bg-blue-700 transition">
-            Contact Us
-          </a>
+         {/* Contact Us Button - Mobile */}
+<button className="block mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white text-center py-2 rounded-md transition [background-image:linear-gradient(to_right,#34d399,#059669)]">
+  Contact Us
+</button>
+
         </div>
       )}
     </header>
