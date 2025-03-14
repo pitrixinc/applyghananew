@@ -41,7 +41,7 @@ const Hero = () => {
       <img
         key={index}
         src={image}
-        className={`absolute inset-0 w-full h-full object-fit transition-opacity duration-1000 ${
+        className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ${
           index === currentIndex ? "opacity-100" : "opacity-0"
         }`}
         alt="Hero Background"
@@ -49,7 +49,7 @@ const Hero = () => {
     ))}
 
     {/* Transparent Overlay */}
-    <div className="absolute inset-0 bg-black bg-white/70 backdrop-blur-sm shadow-md z-10"></div> {/* Adjust opacity as needed */}
+    <div className="absolute inset-0 bg-black bg-white/70 backdrop-blur-md shadow-md z-10"></div> {/* Adjust opacity as needed */}
     
   </div>
 </div>
