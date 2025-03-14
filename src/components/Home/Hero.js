@@ -41,7 +41,7 @@ const Hero = () => {
       <img
         key={index}
         src={image}
-        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+        className={`absolute inset-0 w-full h-full object-fit transition-opacity duration-1000 ${
           index === currentIndex ? "opacity-100" : "opacity-0"
         }`}
         alt="Hero Background"
