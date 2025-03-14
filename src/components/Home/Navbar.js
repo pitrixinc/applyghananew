@@ -95,7 +95,7 @@ const Navbar = () => {
         </ul>
 
         {/* Login Button - Desktop */}
-        <button className="hidden md:block bg-gradient-to-r from-green-400 to-green-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">
+        <button className="hidden md:block bg-gradient-to-r from-green-400 to-green-600 text-white text-sm px-4 py-2 rounded-md hover:bg-blue-700 transition">
           Contact Us
         </button>
 

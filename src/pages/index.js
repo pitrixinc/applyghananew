@@ -2,6 +2,9 @@ import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import Layout from "@/components/Home/layout";
 import Hero from "@/components/Home/Hero";
+import Services from "@/components/Home/Services";
+import WhyChooseUs from "@/components/Home/WhyChooseUs";
+import How from "@/components/Home/How";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,6 +20,9 @@ export default function Home() {
   return (
         <Layout>
           <Hero/>
+          <Services/>
+          <WhyChooseUs/>
+          <How/>
           {/** 
         <Image
           className="dark:invert"
