@@ -8,7 +8,7 @@ const CTA = () => {
     <section>
   <div className="mx-auto max-w-screen-2xl px-4 py-8 sm:px-6 lg:px-8">
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-      <div className="bg-indigo-600 p-8 md:p-12 lg:px-16 lg:py-24">
+      <div className="bg-green-500 p-8 md:p-12 lg:px-16 lg:py-24">
         <div className="mx-auto max-w-xl text-center">
           <h2 className="text-2xl font-bold text-white md:text-3xl">
           Fuel Dreams: Empower Tomorrow with Your Contribution Today
@@ -22,7 +22,7 @@ const CTA = () => {
           <div className="mt-4 md:mt-8">
             <div
               onClick={() => router.push(`/projects`)}
-              className="cursor-pointer inline-block rounded border border-white bg-white px-12 py-3 text-sm font-medium text-indigo-600 transition hover:bg-transparent hover:text-white focus:outline-none focus:ring focus:ring-yellow-400"
+              className="cursor-pointer inline-block rounded border border-white bg-white px-12 py-3 text-sm font-medium text-green-500 transition hover:bg-transparent hover:text-white focus:outline-none focus:ring focus:ring-yellow-400"
             >
               Get Started Today
             </div>

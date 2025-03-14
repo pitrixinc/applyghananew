@@ -5,6 +5,8 @@ import Hero from "@/components/Home/Hero";
 import Services from "@/components/Home/Services";
 import WhyChooseUs from "@/components/Home/WhyChooseUs";
 import How from "@/components/Home/How";
+import Testimonial from "@/components/Home/Testimonial";
+import CTA from "@/components/Home/CTA";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,6 +25,8 @@ export default function Home() {
           <Services/>
           <WhyChooseUs/>
           <How/>
+          <Testimonial/>
+          <CTA/>
           {/** 
         <Image
           className="dark:invert"
