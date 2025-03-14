@@ -37,7 +37,7 @@ const How = () => {
                 <h1 class="text-xl font-semibold capitalize   text-black">Mobile App Development</h1>
 
                 <p class="text-gray-500 ">
-                    We create feature-rich mobile apps for iOS and Android, offering exceptional user experiences while expanding your brand's mobile presence.
+                    We create feature-rich mobile apps for iOS and Android, offering exceptional user experiences while expanding your brand&apos;s mobile presence.
                 </p>
             </div>
 
