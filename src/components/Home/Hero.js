@@ -58,13 +58,13 @@ const Hero = () => {
       <section className="relative mx-auto max-w-screen-xl px-4 pt-24 pb-12 lg:flex items-center md:px-8">
         {/* Hero Content */}
         <div className="relative z-10 flex-1 space-y-4 text-center lg:text-left">
-          <h1 className="text-black font-bold text-4xl xl:text-5xl">
+          <h1 className="text-white md:text-black font-bold text-4xl xl:text-5xl">
             One page Template for <br />
             <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">
               Digital agency
             </span>
           </h1>
-          <p className="text-gray-500 max-w-xl leading-relaxed sm:mx-auto lg:ml-0">
+          <p className="text-gray-200 md:text-gray-500 max-w-xl leading-relaxed sm:mx-auto lg:ml-0">
             It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
           </p>
           <div className="pt-10 flex flex-col sm:flex-row justify-center lg:justify-start space-y-3 sm:space-x-6 sm:space-y-0">
