@@ -32,21 +32,28 @@ const Hero = () => {
 
   return (
     <div className="relative">
-      {/* Background Image Slider (Only Visible on Small Screens) */}
-      <div className="absolute inset-0 z-0 lg:hidden">
-        <div className="w-full h-full relative">
-          {images.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                index === currentIndex ? "opacity-100" : "opacity-0"
-              }`}
-              alt="Hero Background"
-            />
-          ))}
-        </div>
-      </div>
+     {/* Background Image Slider (Only Visible on Small Screens) */}
+<div className="absolute inset-0 z-0 lg:hidden">
+  <div className="w-full h-full relative">
+    
+    {/* Background Image Slider */}
+    {images.map((image, index) => (
+      <img
+        key={index}
+        src={image}
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+          index === currentIndex ? "opacity-100" : "opacity-0"
+        }`}
+        alt="Hero Background"
+      />
+    ))}
+
+    {/* Transparent Overlay */}
+    <div className="absolute inset-0 bg-black opacity-30 z-10"></div> {/* Adjust opacity as needed */}
+    
+  </div>
+</div>
+
 
       <section className="relative mx-auto max-w-screen-xl px-4 pt-24 pb-12 lg:flex items-center md:px-8">
         {/* Hero Content */}
