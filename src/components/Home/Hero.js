@@ -49,7 +49,7 @@ const Hero = () => {
     ))}
 
     {/* Transparent Overlay */}
-    <div className="absolute inset-0 bg-black bg-white/70 backdrop-blur-md shadow-md z-10"></div> {/* Adjust opacity as needed */}
+    <div className="absolute inset-0 bg-black bg-white/70 opacity-30 backdrop-blur-md shadow-md z-10"></div> {/* Adjust opacity as needed */}
     
   </div>
 </div>
