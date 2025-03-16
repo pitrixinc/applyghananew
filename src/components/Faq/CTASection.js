@@ -18,7 +18,7 @@ const CTASection = () => {
         viewport={{ once: true }}
         className="relative z-10 text-center max-w-3xl px-6"
       >
-        <div className="bg-white opacity-90 backdrop-blur-md shadow-xl p-8 rounded-lg border border-white/20">
+        <div className="bg-white opacity-90 backdrop-blur-md shadow-xl  py-8 px-2 md:px-8 md:py-8 rounded-lg border border-white/20">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 flex justify-center items-center gap-3">
             <FaHandshake className="text-green-500" /> Ready to Begin?
           </h2>

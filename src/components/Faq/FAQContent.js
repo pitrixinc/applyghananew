@@ -32,7 +32,7 @@ const FAQContent = () => {
   };
 
   return (
-    <section className="py-24 bg-gray-50">
+    <section className="py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div
         class="flex flex-col justify-center items-center gap-x-16 gap-y-5 xl:gap-28 lg:flex-row lg:justify-between max-lg:max-w-2xl mx-auto max-w-full"
