@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { FaPassport, FaUniversity, FaFileSignature, FaBuilding } from "react-icons/fa";
 
@@ -70,12 +71,12 @@ const Services = () => {
 
         {/* Call to Action */}
         <div className="mt-12">
-          <a
+          <Link
             href="/services"
             className="inline-block bg-gradient-to-r from-green-500 to-green-700 text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:opacity-90 transition"
           >
             View All Services
-          </a>
+          </Link>
         </div>
       </div>
     </section>
