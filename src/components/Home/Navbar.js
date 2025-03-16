@@ -69,25 +69,25 @@ const Navbar = () => {
             )}
           </li>
           <li>
-            <a href="#" className="flex items-center text-sm font-semibold gap-2 hover:text-blue-600 transition">
+            <a href="/about-us" className="flex items-center text-sm font-semibold gap-2 hover:text-blue-600 transition">
               <FaInfoCircle className="text-md" />
               About Us
             </a>
           </li>
           <li>
-            <a href="#" className="flex items-center text-sm font-semibold gap-2 hover:text-blue-600 transition">
+            <a href="/how-it-works" className="flex items-center text-sm font-semibold gap-2 hover:text-blue-600 transition">
               <FaCogs className="text-md" />
               How It Works
             </a>
           </li>
           <li>
-            <a href="#" className="flex items-center text-sm font-semibold gap-2 hover:text-blue-600 transition">
+            <a href="/testimonials" className="flex items-center text-sm font-semibold gap-2 hover:text-blue-600 transition">
               <FaStar className="text-md" />
               Testimonials
             </a>
           </li>
           <li>
-            <a href="#" className="flex items-center text-sm font-semibold gap-2 hover:text-blue-600 transition">
+            <a href="/faq" className="flex items-center text-sm font-semibold gap-2 hover:text-blue-600 transition">
               <FaQuestionCircle className="text-md" />
               FAQ
             </a>
