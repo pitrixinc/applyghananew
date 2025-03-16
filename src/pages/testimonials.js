@@ -1,7 +1,12 @@
 import React from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import Layout from "@/components/Home/layout";
-import Testimonials from "@/components/Testimonials/Testimonials";
+import TestimonialHero from "@/components/Testimonials/TestimonialHero";
+import FeaturedTestimonial from "@/components/Testimonials/FeaturedTestimonial";
+import TestimonialsContent from "@/components/Testimonials/TestimonialsContent";
+import TestimonialStatistics from "@/components/Testimonials/TestimonialStatistics";
+import ClientStories from "@/components/Testimonials/ClientStories";
+import CTASection from "@/components/Testimonials/CTASection";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,7 +21,12 @@ const geistMono = Geist_Mono({
 export default function testimonials() {
   return (
         <Layout>
-          <Testimonials/>
+          <TestimonialHero/>
+          <FeaturedTestimonial/>
+          <TestimonialsContent/>
+          <TestimonialStatistics/>
+          <ClientStories/>
+          <CTASection/>
         </Layout>
   );
 }
