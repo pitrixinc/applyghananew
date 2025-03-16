@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Layout from "@/components/Home/layout";
 import HowItWorksHero from "@/components/HowItWorks/HowItWorksHero";
 import StepProcess from "@/components/HowItWorks/StepProcess";
+import WhyChoose from "@/components/HowItWorks/WhyChoose";
+import Testimonials from "@/components/HowItWorks/Testimonials";
+import CTASection from "@/components/HowItWorks/CTASection";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,6 +22,9 @@ export default function howotworks() {
         <Layout>
             <HowItWorksHero/>
             <StepProcess/>
+            <WhyChoose/>
+            <Testimonials/>
+            <CTASection/>
         </Layout>
   );
 }

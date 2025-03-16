@@ -110,16 +110,16 @@ const Navbar = () => {
         <div className="md:hidden bg-white shadow-lg border-t py-4 px-6">
           <ul className="space-y-4 text-gray-700">
             <li>
-              <Link href="#" className="block hover:text-blue-600 transition">Landing</Link>
+              <Link href="/about-us" className="block hover:text-blue-600 transition">About Us</Link>
             </li>
             <li>
-              <Link href="#" className="block hover:text-blue-600 transition">Account</Link>
+              <Link href="/how-it-works" className="block hover:text-blue-600 transition">How It Works</Link>
             </li>
             <li>
-              <Link href="#" className="block hover:text-blue-600 transition">Work</Link>
+              <Link href="/testimonials" className="block hover:text-blue-600 transition">Testimonials</Link>
             </li>
             <li>
-              <Link href="#" className="block hover:text-blue-600 transition">Blog</Link>
+              <Link href="/faq" className="block hover:text-blue-600 transition">FAQ</Link>
             </li>
             {/* Dropdown - Mobile */}
             <li className="relative">
