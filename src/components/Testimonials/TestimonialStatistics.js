@@ -92,7 +92,7 @@ const TestimonialStatistics = () => {
     
           {/* Logos Section */}
           <div className="mt-12">
-            <h3 className="text-xl text-gray-700 text-center font-semibold">We've Worked With:</h3>
+            <h3 className="text-xl text-gray-700 text-center font-semibold">We&apos;ve Worked With:</h3>
             <div className="flex flex-wrap justify-center items-center gap-6 mt-6">
               <img
                 src="/images/pitrix.png" // Replace with actual logo URLs

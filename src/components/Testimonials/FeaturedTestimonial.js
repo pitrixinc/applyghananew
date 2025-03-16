@@ -45,7 +45,7 @@ const FeaturedTestimonial = () => {
             {/* Quote & Client Details */}
             <div className="text-center md:text-left">
               <p className="text-lg md:text-xl text-gray-700 font-medium italic">
-                "ApplyGhana made my university application process so easy and stress-free. Their team guided me through every step, ensuring I had all the necessary documents. I couldn't have done it without them!"
+              &lsquo;ApplyGhana made my university application process so easy and stress-free. Their team guided me through every step, ensuring I had all the necessary documents. I couldn&apos;t have done it without them!&lsquo;
               </p>
     
               {/* Client Info */}

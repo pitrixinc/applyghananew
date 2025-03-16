@@ -23,7 +23,7 @@ const CTASection = () => {
             <FaHandshake className="text-green-500" /> Ready to Begin?
           </h2>
           <p className="mt-4 text-lg text-gray-600">
-            Whether you're applying for a university, registering a business, or securing important documents, ApplyGhana is here to simplify the process.
+            Whether you&apos;re applying for a university, registering a business, or securing important documents, ApplyGhana is here to simplify the process.
           </p>
 
           {/* Trust Points */}
