@@ -51,46 +51,46 @@ const Navbar = () => {
             {dropdownOpen && (
               <ul className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 w-40 mt-2">
                 <li>
-                  <a href="#" className="block px-4 py-2  hover:bg-gray-100 flex items-center gap-2">
+                  <Link href="#" className="block px-4 py-2  hover:bg-gray-100 flex items-center gap-2">
                     <FaInfoCircle className="text-blue-600" /> About
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="block px-4 py-2 hover:bg-gray-100 flex items-center gap-2">
+                  <Link href="#" className="block px-4 py-2 hover:bg-gray-100 flex items-center gap-2">
                     <FaCogs className="text-blue-600" /> Downloads
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="block px-4 py-2 hover:bg-gray-100 flex items-center gap-2">
+                  <Link href="#" className="block px-4 py-2 hover:bg-gray-100 flex items-center gap-2">
                     <FaStar className="text-blue-600" /> Team Account
-                  </a>
+                  </Link>
                 </li>
               </ul>
             )}
           </li>
           <li>
-            <a href="/about-us" className="flex items-center text-sm font-semibold gap-2 hover:text-blue-600 transition">
+            <Link href="/about-us" className="flex items-center text-sm font-semibold gap-2 hover:text-blue-600 transition">
               <FaInfoCircle className="text-md" />
               About Us
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/how-it-works" className="flex items-center text-sm font-semibold gap-2 hover:text-blue-600 transition">
+            <Link href="/how-it-works" className="flex items-center text-sm font-semibold gap-2 hover:text-blue-600 transition">
               <FaCogs className="text-md" />
               How It Works
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/testimonials" className="flex items-center text-sm font-semibold gap-2 hover:text-blue-600 transition">
+            <Link href="/testimonials" className="flex items-center text-sm font-semibold gap-2 hover:text-blue-600 transition">
               <FaStar className="text-md" />
               Testimonials
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/faq" className="flex items-center text-sm font-semibold gap-2 hover:text-blue-600 transition">
+            <Link href="/faq" className="flex items-center text-sm font-semibold gap-2 hover:text-blue-600 transition">
               <FaQuestionCircle className="text-md" />
               FAQ
-            </a>
+            </Link>
           </li>
         </ul>
 
@@ -110,16 +110,16 @@ const Navbar = () => {
         <div className="md:hidden bg-white shadow-lg border-t py-4 px-6">
           <ul className="space-y-4 text-gray-700">
             <li>
-              <a href="#" className="block hover:text-blue-600 transition">Landing</a>
+              <Link href="#" className="block hover:text-blue-600 transition">Landing</Link>
             </li>
             <li>
-              <a href="#" className="block hover:text-blue-600 transition">Account</a>
+              <Link href="#" className="block hover:text-blue-600 transition">Account</Link>
             </li>
             <li>
-              <a href="#" className="block hover:text-blue-600 transition">Work</a>
+              <Link href="#" className="block hover:text-blue-600 transition">Work</Link>
             </li>
             <li>
-              <a href="#" className="block hover:text-blue-600 transition">Blog</a>
+              <Link href="#" className="block hover:text-blue-600 transition">Blog</Link>
             </li>
             {/* Dropdown - Mobile */}
             <li className="relative">
@@ -132,13 +132,13 @@ const Navbar = () => {
               {dropdownOpen && (
                 <ul className="mt-2 bg-gray-100 rounded-md">
                   <li>
-                    <a href="#" className="block px-4 py-2 hover:bg-gray-200">About</a>
+                    <Link href="#" className="block px-4 py-2 hover:bg-gray-200">About</Link>
                   </li>
                   <li>
-                    <a href="#" className="block px-4 py-2 hover:bg-gray-200">Downloads</a>
+                    <Link href="#" className="block px-4 py-2 hover:bg-gray-200">Downloads</Link>
                   </li>
                   <li>
-                    <a href="#" className="block px-4 py-2 hover:bg-gray-200">Team Account</a>
+                    <Link href="#" className="block px-4 py-2 hover:bg-gray-200">Team Account</Link>
                   </li>
                 </ul>
               )}

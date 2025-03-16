@@ -1,7 +1,7 @@
 import React from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import Layout from "@/components/Home/layout";
-import Faq from "@/components/Faq/Faq";
+import Testimonials from "@/components/Testimonials/Testimonials";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,10 +13,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export default function faq() {
+export default function testimonials() {
   return (
         <Layout>
-          <Faq/>
+          <Testimonials/>
         </Layout>
   );
 }
