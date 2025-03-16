@@ -1,10 +1,10 @@
 import React from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import Layout from "@/components/Home/layout";
-import FAQHero from "@/components/Faq/FaqHero";
 import FAQCategories from "@/components/Faq/FAQCategories";
 import FAQContent from "@/components/Faq/FAQContent";
 import CTASection from "@/components/Faq/CTASection";
+import FAQsHero from "@/components/Faq/FAQsHero";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 export default function faq() {
   return (
         <Layout>
-          <FAQHero/>
+          <FAQsHero/>
           <FAQCategories/>
           <FAQContent/>
           <CTASection/>
