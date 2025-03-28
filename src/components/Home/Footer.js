@@ -18,9 +18,10 @@ const Footer = () => {
         <h4 class="font-semibold text-black">Product</h4>
 
         <div class="mt-3 grid space-y-3">
+          <p><a class="inline-flex gap-x-2 text-gray-500 hover:text-gray-200 focus:outline-none focus:text-gray-200:text-neutral-200:text-neutral-200" href="#">Online Registrations</a></p>
           <p><a class="inline-flex gap-x-2 text-gray-500 hover:text-gray-200 focus:outline-none focus:text-gray-200:text-neutral-200:text-neutral-200" href="#">Pricing</a></p>
-          <p><a class="inline-flex gap-x-2 text-gray-500 hover:text-gray-200 focus:outline-none focus:text-gray-200:text-neutral-200:text-neutral-200" href="#">Changelog</a></p>
-          <p><a class="inline-flex gap-x-2 text-gray-500 hover:text-gray-200 focus:outline-none focus:text-gray-200:text-neutral-200:text-neutral-200" href="#">Docs</a></p>
+          <p><a class="inline-flex gap-x-2 text-gray-500 hover:text-gray-200 focus:outline-none focus:text-gray-200:text-neutral-200:text-neutral-200" href="#">Educational Consultancy</a></p>
+		  <p><a class="inline-flex gap-x-2 text-gray-500 hover:text-gray-200 focus:outline-none focus:text-gray-200:text-neutral-200:text-neutral-200" href="#">Website Development</a></p>
         </div>
       </div>
       
@@ -29,10 +30,10 @@ const Footer = () => {
         <h4 class="font-semibold text-black">Company</h4>
 
         <div class="mt-3 grid space-y-3">
-          <p><a class="inline-flex gap-x-2 text-gray-500 hover:text-gray-200 focus:outline-none focus:text-gray-200:text-neutral-200:text-neutral-200" href="#">About us</a></p>
-          <p><a class="inline-flex gap-x-2 text-gray-500 hover:text-gray-200 focus:outline-none focus:text-gray-200:text-neutral-200:text-neutral-200" href="#">Blog</a></p>
-          <p><a class="inline-flex gap-x-2 text-gray-500 hover:text-gray-200 focus:outline-none focus:text-gray-200:text-neutral-200:text-neutral-200" href="#">Careers</a> <span class="inline-block ms-1 text-xs bg-gradient-to-r from-green-400 to-green-600 text-white py-1 px-2 rounded-lg">We&apos;re hiring</span></p>
-          <p><a class="inline-flex gap-x-2 text-gray-500 hover:text-gray-200 focus:outline-none focus:text-gray-200:text-neutral-200:text-neutral-200" href="#">Customers</a></p>
+          <p><a class="inline-flex gap-x-2 text-gray-500 hover:text-gray-200 focus:outline-none focus:text-gray-200:text-neutral-200:text-neutral-200" href="/about-us">About us</a></p>
+          <p><a class="inline-flex gap-x-2 text-gray-500 hover:text-gray-200 focus:outline-none focus:text-gray-200:text-neutral-200:text-neutral-200" href="/blogs">Blog</a></p>
+          <p><a class="inline-flex gap-x-2 text-gray-500 hover:text-gray-200 focus:outline-none focus:text-gray-200:text-neutral-200:text-neutral-200" href="#">Careers</a> <span class="inline-block ms-1 text-xs bg-gradient-to-r from-green-400 to-green-600 text-white py-1 px-2 rounded-lg">We&apos;re not hiring</span></p>
+          <p><a class="inline-flex gap-x-2 text-gray-500 hover:text-gray-200 focus:outline-none focus:text-gray-200:text-neutral-200:text-neutral-200" href="/testimonials">Testimonials</a></p>
         </div>
       </div>
       

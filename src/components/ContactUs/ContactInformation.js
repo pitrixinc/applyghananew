@@ -33,11 +33,6 @@ const ContactInformation = () => {
                 contact@applyghana.com
               </a>
             </p>
-            <p className="text-gray-600 mt-1">
-              <a href="mailto:richardakuffo@applyghana.com" className="text-green-500 font-semibold hover:underline">
-                richardakuffo@applyghana.com
-              </a>
-            </p>
           </div>
 
           {/* Location */}
