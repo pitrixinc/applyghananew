@@ -182,7 +182,7 @@ const ContactUs = () => {
             <FaEnvelope class="shrink-0 size-6 mt-1.5 text-gray-800" />
             <div class="grow">
                 <h3 class="font-semibold text-gray-800">Get in Touch</h3>
-                <p class="mt-1 text-sm text-gray-500">Reach out to us for any inquiries or support. We&apos;re here!</p>
+                <p class="mt-1 text-sm text-gray-500">We welcome your inquiries and would love to hear from you. Whether you have questions or need support, feel free to reach out. Our team is always ready to assist you.</p>
                 
             </div>
             </div>
@@ -193,7 +193,7 @@ const ContactUs = () => {
             <FaPhoneAlt class="shrink-0 size-6 mt-1.5 text-gray-800" />
             <div class="grow">
                 <h3 class="font-semibold text-gray-800">We&apos;re here!</h3>
-                <p class="mt-1 text-sm text-gray-500">Send us your questions, and we&apos;ll get back to you soon.</p>
+                <p class="mt-1 text-sm text-gray-500">Our team is dedicated to providing support and guidance whenever you need it. Reach out to us with any questions, concerns, or feedback, and we will respond promptly and effectively.</p>
                 
             </div>
             </div>
@@ -204,7 +204,7 @@ const ContactUs = () => {
             <FaComments class="shrink-0 size-6 mt-1.5 text-gray-800" />
             <div class="grow">
                 <h3 class="font-semibold text-gray-800">Talk to Us</h3>
-                <p class="mt-1 text-sm text-gray-500">Have a concern? Our team is ready to assist you.</p>
+                <p class="mt-1 text-sm text-gray-500">Do you have concerns or need assistance? Our experts are here to help. Send us a message and we will ensure that your queries are addressed as quickly and efficiently as possible.</p>
                 
             </div>
             </div>
@@ -215,7 +215,7 @@ const ContactUs = () => {
             <FaHeadset class="shrink-0 size-6 mt-1.5 text-gray-800" />
             <div class="grow">
                 <h3 class="font-semibold text-gray-800">Get Support</h3>
-                <p class="mt-1 text-sm text-gray-500">Need help? Let us know, and we&apos;ll provide the solutions.</p>
+                <p class="mt-1 text-sm text-gray-500">Need help with any process or information? Our support team is available to provide expert advice and solutions. Contact us for professional assistance and we will guide you through every step.</p>
                 
             </div>
             </div>
