@@ -41,7 +41,7 @@ const WhyChooseUs = () => {
         </div>
 
         {/* Comparison Table */}
-        <div className="mt-16 bg-white p-8 rounded-lg shadow-lg">
+        <div className="mt-16 bg-white p-2 md:p-8 rounded-lg shadow-lg">
           <h3 className="text-2xl font-bold text-center text-gray-800">How We Compare</h3>
           <p className="mt-2 text-gray-600 text-center">
             See how ApplyGhana stands out from the competition.
