@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { FaBars, FaCogs, FaInfoCircle, FaQuestionCircle, FaStar, FaTimes } from "react-icons/fa";
+import { FaBars, FaCogs, FaInfoCircle, FaNewspaper, FaQuestionCircle, FaStar, FaTimes } from "react-icons/fa";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import { MdHomeRepairService } from "react-icons/md";
 
@@ -92,6 +92,12 @@ const Navbar = () => {
               FAQ
             </Link>
           </li>
+          <li>
+            <Link href="/blogs" className="flex items-center text-sm font-semibold gap-2 hover:text-blue-600 transition">
+              <FaNewspaper className="text-md" />
+              Blogs
+            </Link>
+          </li>
         </ul>
 
         {/* Login Button - Desktop */}
@@ -121,6 +127,9 @@ const Navbar = () => {
             <li>
               <Link href="/faq" className="block hover:text-blue-600 transition">FAQ</Link>
             </li>
+            <li>
+              <Link href="/blogs" className="block hover:text-blue-600 transition">Blogs</Link>
+            </li>
             {/* Dropdown - Mobile */}
             <li className="relative">
               <button
@@ -146,7 +155,7 @@ const Navbar = () => {
           </ul>
 
          {/* Contact Us Button - Mobile */}
-<button className="block mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white text-center py-2 rounded-md transition [background-image:linear-gradient(to_right,#34d399,#059669)]">
+<button className="block mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white text-center p-2 rounded-md transition ">
   Contact Us
 </button>
 

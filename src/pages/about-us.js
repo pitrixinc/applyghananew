@@ -4,9 +4,10 @@ import Layout from "@/components/Home/layout";
 import AboutUsHero from "@/components/AboutUs/AboutUsHero";
 import WhoWeAre from "@/components/AboutUs/WhoWeAre";
 import MissionVisionValues from "@/components/AboutUs/MissionVisionValues";
-import WhyChooseUs from "@/components/Home/WhyChooseUs";
+import WhyChooseUs from "@/components/AboutUs/WhyChooseUs";
 import MeetTheTeam from "@/components/AboutUs/MeetTheTeam";
 import CTASection from "@/components/AboutUs/CTASection";
+import AchievementsImpact from "@/components/AboutUs/AchievementsImpact";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,6 +27,7 @@ export default function aboutus() {
             <MissionVisionValues/>
             <WhyChooseUs/>
             <MeetTheTeam/>
+            <AchievementsImpact/>
             <CTASection/>
         </Layout>
   );

@@ -61,7 +61,7 @@ const MeetTheTeam = () => {
           Meet Our <span className="text-green-500">Team</span>
         </motion.h2>
         <p className="mt-4 text-lg text-gray-600 text-center">
-          Our **dedicated experts** are here to guide you every step of the way.
+          Our <b>dedicated experts</b> are here to guide you every step of the way.
         </p>
 
         {/* Team Grid */}

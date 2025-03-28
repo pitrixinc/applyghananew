@@ -15,7 +15,7 @@ const WhyChooseUs = () => {
           Why <span className="text-green-500">Choose Us?</span>
         </motion.h2>
         <p className="mt-4 text-lg text-gray-600 text-center">
-          We stand out in the industry with **fast processing, expert guidance, and trusted support**.
+          We stand out in the industry with <b>fast processing, expert guidance, and trusted support.</b>
         </p>
 
         {/* Benefits Grid */}
@@ -44,7 +44,7 @@ const WhyChooseUs = () => {
         <div className="mt-16 bg-white p-8 rounded-lg shadow-lg">
           <h3 className="text-2xl font-bold text-center text-gray-800">How We Compare</h3>
           <p className="mt-2 text-gray-600 text-center">
-            See how **ApplyGhana** stands out from the competition.
+            See how ApplyGhana stands out from the competition.
           </p>
 
           <div className="overflow-x-auto mt-6">
