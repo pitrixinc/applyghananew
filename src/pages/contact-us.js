@@ -19,8 +19,8 @@ export default function contactus() {
   return (
         <Layout>
             <ContactUsHero/>
-            <ContactInformation/>
             <ContactUs/>
+            <ContactInformation/>
         </Layout>
   );
 }

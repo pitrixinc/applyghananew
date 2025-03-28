@@ -1,10 +1,17 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { FaBars, FaCogs, FaInfoCircle, FaNewspaper, FaQuestionCircle, FaStar, FaTimes } from "react-icons/fa";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import { MdHomeRepairService } from "react-icons/md";
 
 const Navbar = () => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push('/contact-us');
+  };
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -101,7 +108,7 @@ const Navbar = () => {
         </ul>
 
         {/* Login Button - Desktop */}
-        <button className="hidden md:block bg-gradient-to-r from-green-400 to-green-600 text-white text-sm px-4 py-2 rounded-md hover:bg-blue-700 transition">
+        <button onClick={handleClick} className="hidden md:block bg-gradient-to-r from-green-400 to-green-600 text-white text-sm px-4 py-2 rounded-md hover:bg-blue-700 transition">
           Contact Us
         </button>
 
@@ -155,7 +162,7 @@ const Navbar = () => {
           </ul>
 
          {/* Contact Us Button - Mobile */}
-<button className="block mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white text-center p-2 rounded-md transition ">
+<button onClick={handleClick} className="block mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white text-center p-2 rounded-md transition ">
   Contact Us
 </button>
 
