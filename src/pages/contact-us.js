@@ -1,6 +1,9 @@
 import React from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import Layout from "@/components/Home/layout";
+import ContactUs from "@/components/ContactUs/ContactUs";
+import ContactUsHero from "@/components/ContactUs/ContactUsHero";
+import ContactInformation from "@/components/ContactUs/ContactInformation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,7 +18,9 @@ const geistMono = Geist_Mono({
 export default function contactus() {
   return (
         <Layout>
-            contactus
+            <ContactUsHero/>
+            <ContactInformation/>
+            <ContactUs/>
         </Layout>
   );
 }
