@@ -1,12 +1,6 @@
 import { useEffect, useState } from "react";
-import { db } from "../../../firebase.config"; // Ensure correct Firebase config path
-import {
-  collection,
-  getDocs,
-  doc,
-  updateDoc,
-  deleteDoc,
-} from "firebase/firestore";
+import { db } from "../../../firebase.config";
+import { collection, getDocs, doc, updateDoc, deleteDoc } from "firebase/firestore";
 import { FaTrash, FaEdit, FaPlus, FaMinus, FaSave } from "react-icons/fa";
 
 const ServicesListing = () => {
@@ -27,10 +21,15 @@ const ServicesListing = () => {
       const categorizedServices = {};
 
       querySnapshot.forEach((doc) => {
-        const service = { id: doc.id, ...doc.data() };
-        if (!service.keyFeatures) service.keyFeatures = [];
-        if (!service.processSteps) service.processSteps = [];
-        if (!service.faqs) service.faqs = [];
+        const service = { 
+          id: doc.id, 
+          ...doc.data(),
+          keyFeatures: doc.data().keyFeatures || [],
+          processSteps: doc.data().processSteps || [],
+          faqs: doc.data().faqs || [],
+          contactForm: doc.data().contactForm || { fields: [], submitText: "Submit" },
+          applyNowForm: doc.data().applyNowForm || { fields: [], submitText: "Apply Now" }
+        };
         
         if (!categorizedServices[service.category]) {
           categorizedServices[service.category] = [];
@@ -65,7 +64,15 @@ const ServicesListing = () => {
       ...service,
       keyFeatures: [...service.keyFeatures],
       processSteps: [...service.processSteps],
-      faqs: [...service.faqs]
+      faqs: [...service.faqs],
+      contactForm: {
+        ...service.contactForm,
+        fields: [...service.contactForm.fields]
+      },
+      applyNowForm: {
+        ...service.applyNowForm,
+        fields: [...service.applyNowForm.fields]
+      }
     });
   };
 
@@ -105,37 +112,225 @@ const ServicesListing = () => {
     }));
   };
 
+  const handleNestedChange = (parentField, field, value) => {
+    setEditingService((prev) => ({
+      ...prev,
+      [parentField]: {
+        ...prev[parentField],
+        [field]: value
+      }
+    }));
+  };
+
   const handleArrayChange = (field, index, subField, value) => {
-    if (field === 'faqs') {
+    if (field.includes('.')) {
+      // Handle nested arrays like contactForm.fields
+      const [parentField, childField] = field.split('.');
+      setEditingService((prev) => {
+        const newArray = [...prev[parentField][childField]];
+        if (subField) {
+          newArray[index] = { ...newArray[index], [subField]: value };
+        } else {
+          newArray[index] = value;
+        }
+        return {
+          ...prev,
+          [parentField]: {
+            ...prev[parentField],
+            [childField]: newArray
+          }
+        };
+      });
+    } else {
+      // Handle regular arrays
       setEditingService((prev) => ({
         ...prev,
         [field]: prev[field].map((item, i) => 
-          i === index ? { ...item, [subField]: value } : item
+          i === index ? (subField ? { ...item, [subField]: value } : value) : item
         ),
-      }));
-    } else {
-      setEditingService((prev) => ({
-        ...prev,
-        [field]: prev[field].map((item, i) => (i === index ? value : item)),
       }));
     }
   };
 
-  const handleAddArrayItem = (field) => {
-    setEditingService((prev) => {
-      const newItem = field === 'faqs' ? { question: '', answer: '' } : '';
-      return {
+  const handleAddArrayItem = (field, defaultValue = '') => {
+    if (field.includes('.')) {
+      const [parentField, childField] = field.split('.');
+      setEditingService((prev) => ({
         ...prev,
-        [field]: [...prev[field], newItem],
-      };
-    });
+        [parentField]: {
+          ...prev[parentField],
+          [childField]: [...prev[parentField][childField], defaultValue]
+        }
+      }));
+    } else {
+      setEditingService((prev) => ({
+        ...prev,
+        [field]: [...prev[field], defaultValue]
+      }));
+    }
   };
 
   const handleRemoveArrayItem = (field, index) => {
-    setEditingService((prev) => ({
-      ...prev,
-      [field]: prev[field].filter((_, i) => i !== index),
-    }));
+    if (field.includes('.')) {
+      const [parentField, childField] = field.split('.');
+      setEditingService((prev) => ({
+        ...prev,
+        [parentField]: {
+          ...prev[parentField],
+          [childField]: prev[parentField][childField].filter((_, i) => i !== index)
+        }
+      }));
+    } else {
+      setEditingService((prev) => ({
+        ...prev,
+        [field]: prev[field].filter((_, i) => i !== index)
+      }));
+    }
+  };
+
+  const renderFormFields = (formName) => {
+    const form = editingService[formName];
+    if (!form || !form.fields) return null;
+
+    return (
+      <div className="mt-4 p-4 border rounded-lg bg-gray-50">
+        <h3 className="font-semibold text-lg mb-3">
+          {formName === 'contactForm' ? 'Contact Form' : 'Apply Now Form'} Fields
+        </h3>
+
+        {form.fields.map((field, index) => (
+          <div key={index} className="mb-4 p-3 border rounded-lg bg-white">
+            <input
+              type="text"
+              className="w-full p-2 border rounded-lg mb-2"
+              value={field.label || ''}
+              onChange={(e) => handleArrayChange(`${formName}.fields`, index, 'label', e.target.value)}
+              placeholder="Field Label"
+            />
+
+            <select
+              className="w-full p-2 border rounded-lg"
+              value={field.type || 'text'}
+              onChange={(e) => handleArrayChange(`${formName}.fields`, index, 'type', e.target.value)}
+            >
+              <option value="text">Text</option>
+              <option value="textarea">Textarea</option>
+              <option value="select">Select</option>
+              <option value="file">File Upload</option>
+            </select>
+
+            {['text', 'file'].includes(field.type) && (
+              <input
+                type="text"
+                className="w-full p-2 border rounded-lg mt-2"
+                value={field.value || ''}
+                onChange={(e) => handleArrayChange(`${formName}.fields`, index, 'value', e.target.value)}
+                placeholder={field.type === 'file' ? 'File Upload Field Value' : 'Default Value'}
+              />
+            )}
+
+            {field.type === 'textarea' && (
+              <textarea
+                className="w-full p-2 border rounded-lg mt-2"
+                value={field.value || ''}
+                onChange={(e) => handleArrayChange(`${formName}.fields`, index, 'value', e.target.value)}
+                placeholder="Default Value"
+              />
+            )}
+
+            {field.type === 'select' && (
+              <div className="mt-3">
+                <h4 className="text-sm font-medium">Select Options</h4>
+                {(field.options || []).map((option, optIndex) => (
+                  <div key={optIndex} className="flex items-center space-x-2 mt-1">
+                    <input
+                      type="text"
+                      className="w-full p-2 border rounded-lg"
+                      value={option.label || option}
+                      onChange={(e) => {
+                        if (typeof option === 'object') {
+                          const updatedOptions = [...field.options];
+                          updatedOptions[optIndex] = { ...option, label: e.target.value };
+                          handleArrayChange(`${formName}.fields`, index, 'options', updatedOptions);
+                        } else {
+                          const updatedOptions = [...field.options];
+                          updatedOptions[optIndex] = e.target.value;
+                          handleArrayChange(`${formName}.fields`, index, 'options', updatedOptions);
+                        }
+                      }}
+                      placeholder="Option Value"
+                    />
+                    {typeof option === 'object' && option.price !== undefined && (
+                      <input
+                        type="number"
+                        className="w-24 p-2 border rounded-lg"
+                        value={option.price}
+                        onChange={(e) => {
+                          const updatedOptions = [...field.options];
+                          updatedOptions[optIndex] = { ...option, price: Number(e.target.value) };
+                          handleArrayChange(`${formName}.fields`, index, 'options', updatedOptions);
+                        }}
+                        placeholder="Price"
+                      />
+                    )}
+                    <button
+                      onClick={() => {
+                        const updatedOptions = field.options.filter((_, i) => i !== optIndex);
+                        handleArrayChange(`${formName}.fields`, index, 'options', updatedOptions);
+                      }}
+                      className="text-red-500"
+                    >
+                      <FaTrash />
+                    </button>
+                  </div>
+                ))}
+                <button
+                  onClick={() => {
+                    const newOption = formName === 'applyNowForm' ? { label: '', price: 0 } : '';
+                    handleArrayChange(
+                      `${formName}.fields`, 
+                      index, 
+                      'options', 
+                      [...(field.options || []), newOption]
+                    );
+                  }}
+                  className="bg-green-500 text-white px-3 py-1 rounded-lg mt-2"
+                >
+                  Add Option
+                </button>
+              </div>
+            )}
+
+            <button
+              onClick={() => handleRemoveArrayItem(`${formName}.fields`, index)}
+              className="text-red-500 mt-2 flex items-center"
+            >
+              <FaTrash className="mr-1" /> Remove Field
+            </button>
+          </div>
+        ))}
+
+        <button
+          onClick={() => handleAddArrayItem(
+            `${formName}.fields`, 
+            { label: '', type: 'text', value: '' }
+          )}
+          className="bg-green-500 text-white px-3 py-1 rounded-lg mt-2 flex items-center"
+        >
+          <FaPlus className="mr-1" /> Add Field
+        </button>
+
+        <div className="mt-4">
+          <h4 className="text-sm font-medium">Submit Button Text</h4>
+          <input
+            type="text"
+            className="w-full p-2 border rounded-lg"
+            value={form.submitText || (formName === 'contactForm' ? 'Submit' : 'Apply Now')}
+            onChange={(e) => handleNestedChange(formName, 'submitText', e.target.value)}
+          />
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -211,7 +406,7 @@ const ServicesListing = () => {
                               </div>
                             ))}
                             <button
-                              onClick={() => handleAddArrayItem("keyFeatures")}
+                              onClick={() => handleAddArrayItem("keyFeatures", "")}
                               className="bg-green-500 text-white px-3 py-1 rounded-lg mt-2"
                             >
                               Add Feature
@@ -234,7 +429,7 @@ const ServicesListing = () => {
                               </div>
                             ))}
                             <button
-                              onClick={() => handleAddArrayItem("processSteps")}
+                              onClick={() => handleAddArrayItem("processSteps", "")}
                               className="bg-green-500 text-white px-3 py-1 rounded-lg mt-2"
                             >
                               Add Step
@@ -266,12 +461,15 @@ const ServicesListing = () => {
                               </div>
                             ))}
                             <button
-                              onClick={() => handleAddArrayItem("faqs")}
+                              onClick={() => handleAddArrayItem("faqs", { question: "", answer: "" })}
                               className="bg-green-500 text-white px-3 py-1 rounded-lg mt-2 flex items-center"
                             >
                               <FaPlus className="mr-1" /> Add FAQ
                             </button>
                           </div>
+
+                          {renderFormFields('contactForm')}
+                          {renderFormFields('applyNowForm')}
 
                           <div className="flex justify-between">
                             <button
@@ -327,6 +525,18 @@ const ServicesListing = () => {
                                 <p className="text-gray-700">A: {faq.answer}</p>
                               </div>
                             ))}
+                          </div>
+
+                          <div>
+                            <h3 className="font-medium">Contact Form</h3>
+                            <p className="text-gray-600">Fields: {service.contactForm?.fields?.length || 0}</p>
+                            <p className="text-gray-600">Submit Text: {service.contactForm?.submitText || 'Submit'}</p>
+                          </div>
+
+                          <div>
+                            <h3 className="font-medium">Apply Now Form</h3>
+                            <p className="text-gray-600">Fields: {service.applyNowForm?.fields?.length || 0}</p>
+                            <p className="text-gray-600">Submit Text: {service.applyNowForm?.submitText || 'Apply Now'}</p>
                           </div>
 
                           <div className="flex justify-between">
