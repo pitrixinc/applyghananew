@@ -1,6 +1,7 @@
 import React from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import Layout from "@/components/SuperAdmin/Layout/layout";
+import ServicesListing from "@/components/SuperAdmin/Services/ServicesListing";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,7 +16,7 @@ const geistMono = Geist_Mono({
 export default function services() {
   return (
         <Layout>
-            services
+            <ServicesListing/>
         </Layout>
   );
 }
