@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { db } from "../../../firebase.config";
 import { collection, getDocs, doc, updateDoc, deleteDoc } from "firebase/firestore";
 import { FaTrash, FaEdit, FaPlus, FaMinus, FaSave } from "react-icons/fa";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const ServicesListing = () => {
+  const router = useRouter();
+  const { id } = router.query;
   const [services, setServices] = useState({});
   const [loading, setLoading] = useState(true);
   const [expandedCategories, setExpandedCategories] = useState({});
@@ -335,7 +339,10 @@ const ServicesListing = () => {
 
   return (
     <div className="p-6 max-w-5xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6 text-center">Admin Services</h1>
+      <div className="flex justify-between items-center">
+       <h1 className="text-3xl font-bold mb-6 text-center">Admin Services</h1>
+       <Link href={`/my-admin/${id}/services/create`}><FaPlus/></Link>
+      </div>
 
       {loading ? (
         <p className="text-center text-gray-600">Loading services...</p>
