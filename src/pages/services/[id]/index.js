@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export default function servicespage() {
+export default function ServicePage() {
   const router = useRouter();
   const { id } = router.query;
   const [service, setService] = useState(null);

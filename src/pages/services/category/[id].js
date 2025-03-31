@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export default function selectedcategory() {
+export default function SelectedCategory() {
   const router = useRouter();
   const { id } = router.query;
   const [categoryName, setCategoryName] = useState("");
