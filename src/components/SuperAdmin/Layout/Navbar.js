@@ -103,7 +103,7 @@ const Navbar = () => {
           <button
             className="z-10 cursor-pointer block py-3 text-center text-gray-700 hover:text-indigo-600 border rounded-lg md:border-none"
           >
-            {userDetails?.displayName}
+            {userDetails?.displayName && userDetails?.displayName.split(' ')[0]}
           </button>
           </li>
                </div>
@@ -133,7 +133,7 @@ const Navbar = () => {
 
           {userDetails && userDetails?.photoURL ? (
           <>
-          <div className="md:block items-center justify-end gap-x-6 space-y-3 md:flex md:space-y-0">
+          <div className="flex items-center justify-end gap-x-6 space-y-3 md:flex md:space-y-0">
           <li className="flex">
             <img src={userDetails?.photoURL} alt="profile" className="w-10 h-10 rounded-full" />
                </li>
@@ -141,7 +141,7 @@ const Navbar = () => {
           <button
             className="z-10 cursor-pointer block p-3 text-center text-gray-700 hover:text-indigo-600 border rounded-lg md:border-none"
           >
-            {userDetails?.displayName}
+            {userDetails?.displayName && userDetails?.displayName.split(' ')[0]}
           </button>
           </li>
                </div>
