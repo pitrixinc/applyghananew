@@ -1,7 +1,7 @@
 import React from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import Layout from "@/components/SuperAdmin/Layout/layout";
-import BlogsListing from "@/components/SuperAdmin/Blogs/BlogsListing";
+import Create from "@/components/SuperAdmin/Blogs/Create";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,10 +13,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export default function Blogs() {
+export default function blogcreate() {
   return (
         <Layout>
-            <BlogsListing/>
+            <Create/>
         </Layout>
   );
 }
