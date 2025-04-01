@@ -175,7 +175,7 @@ const removeOption = (fieldIndex, optIndex) => {
     const file = event.target.files[0];
     if (!file) return;
   
-    setLoading(true);
+  //  setLoading(true);
     const storageRef = ref(storage, `services/${slug}-${file.name}`);
     const metadata = { contentType: file.type }; // Explicitly set content type
   
@@ -192,12 +192,12 @@ const removeOption = (fieldIndex, optIndex) => {
         async () => {
           const url = await getDownloadURL(uploadTask.snapshot.ref);
           setImageUrl(url);
-          setLoading(false);
+        //  setLoading(false);
         }
       );
     } catch (error) {
       console.error("Error uploading image:", error);
-      setLoading(false);
+    //  setLoading(false);
     }
   };
   
