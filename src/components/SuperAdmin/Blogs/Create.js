@@ -36,6 +36,12 @@ const Create = () => {
 
   // Predefined categories
   const categories = [
+    'Educational Consultancy Services',
+    'Document Application and Acquisition Services',
+    'Additional Services',
+    'Premium Services',
+    'Sports',
+    'International',
     'Technology',
     'Lifestyle',
     'Business',
@@ -44,6 +50,7 @@ const Create = () => {
     'Food',
     'Education',
   ];
+
 
   useEffect(() => {
     const fetchUserData = async () => {
