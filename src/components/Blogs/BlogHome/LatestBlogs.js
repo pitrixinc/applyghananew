@@ -27,7 +27,7 @@ const LatestBlogs = ({ blogs }) => {
         {/* Blog Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-8">
           {blogs.map((blog) => (
-            <article key={blog.id} className="group relative flex flex-col h-full">
+            <article key={blog.id} className="mb-2 group relative flex flex-col h-full">
               {/* Featured Image */}
               <div className="aspect-w-16 aspect-h-9 mb-4 overflow-hidden rounded-xl bg-gray-100">
                 <img
