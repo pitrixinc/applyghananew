@@ -133,13 +133,13 @@ const Navbar = () => {
 
           {userDetails && userDetails?.photoURL ? (
           <>
-          <div className="mt-3 flex items-center justify-start gap-x-6 space-y-3">
+          <div className="mt-3 flex items-center justify-start gap-x-2 space-y-3">
           <div className="">
             <img src={userDetails?.photoURL} alt="profile" className="w-10 h-10 rounded-full" />
                </div>
           <div className="">
           <button
-            className="z-10 cursor-pointer  p-3 text-center text-gray-700 hover:text-indigo-600 border rounded-lg md:border-none"
+            className="z-10 cursor-pointer  p-3 text-center text-gray-700 hover:text-indigo-600 rounded-lg"
           >
             {userDetails?.displayName && userDetails?.displayName.split(' ')[0]}
           </button>
