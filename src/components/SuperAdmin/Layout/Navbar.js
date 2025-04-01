@@ -95,7 +95,7 @@ const Navbar = () => {
         {/* Login Button - Desktop */}
         {userDetails && userDetails?.photoURL ? (
           <>
-          <div className="md:block items-center justify-end gap-x-6 space-y-3 md:flex md:space-y-0">
+          <div className="hidden md:block items-center justify-end gap-x-6 space-y-3 md:flex md:space-y-0">
           <li className="flex">
             <img src={userDetails?.photoURL} alt="profile" className="w-10 h-10 rounded-full" />
                </li>
@@ -139,7 +139,7 @@ const Navbar = () => {
                </li>
           <li className="flex">
           <button
-            className="z-10 cursor-pointer block py-3 text-center text-gray-700 hover:text-indigo-600 border rounded-lg md:border-none"
+            className="z-10 cursor-pointer block p-3 text-center text-gray-700 hover:text-indigo-600 border rounded-lg md:border-none"
           >
             {userDetails?.displayName}
           </button>
