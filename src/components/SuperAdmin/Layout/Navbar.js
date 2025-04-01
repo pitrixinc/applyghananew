@@ -133,20 +133,20 @@ const Navbar = () => {
 
           {userDetails && userDetails?.photoURL ? (
           <>
-          <div className="flex items-center justify-start gap-x-6 space-y-3">
-          <li className="">
+          <div className="mt-3 flex items-center justify-start gap-x-6 space-y-3">
+          <div className="">
             <img src={userDetails?.photoURL} alt="profile" className="w-10 h-10 rounded-full" />
-               </li>
-          <li className="">
+               </div>
+          <div className="">
           <button
             className="z-10 cursor-pointer  p-3 text-center text-gray-700 hover:text-indigo-600 border rounded-lg md:border-none"
           >
             {userDetails?.displayName && userDetails?.displayName.split(' ')[0]}
           </button>
-          </li>
+          </div>
                </div>
         </>) : (  
-<button className=" mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white text-center py-2 rounded-md transition [background-image:linear-gradient(to_right,#34d399,#059669)]">
+<button className=" mt-4 bg-gradient-to-r from-green-400 to-green-600 text-white text-center p-3 rounded-md transition [background-image:linear-gradient(to_right,#34d399,#059669)]">
  My Account
 </button>
         )}
