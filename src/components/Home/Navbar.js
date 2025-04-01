@@ -93,14 +93,14 @@ const Navbar = () => {
               FAQ
             </Link>
           </li>
-          {/*
+        
           <li>
             <Link href="/blogs" className="flex items-center text-sm font-semibold gap-2 hover:text-blue-600 transition">
               <FaNewspaper className="text-md" />
               Blogs
             </Link>
           </li>
-          */}
+        
         </ul>
 
         {/* Contact Us Button */}
@@ -127,11 +127,11 @@ const Navbar = () => {
             <li>
               <Link href="/faq" className="block hover:text-blue-600 transition">FAQ</Link>
             </li>
-            {/*
+           
             <li>
-              <Link href="/blogs" className="block hover:text-blue-600 transition">Blogs</Link>
+              <Link href="/blogs" className="block hover:text-blue-600 transition">Blog</Link>
             </li>
-            */}
+           
             {/* Services Dropdown - Mobile */}
             <li className="relative">
               <button className="flex items-center justify-between w-full hover:text-blue-600 transition" onClick={() => setDropdownOpen(!dropdownOpen)}>

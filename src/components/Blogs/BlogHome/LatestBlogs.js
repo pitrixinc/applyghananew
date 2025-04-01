@@ -33,7 +33,7 @@ const LatestBlogs = ({ blogs }) => {
                 <img
                   src={blog.featuredImage || '/placeholder-image.jpg'}
                   alt={blog.title}
-                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                  className="object-cover w-full h-30 group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
 
@@ -45,7 +45,7 @@ const LatestBlogs = ({ blogs }) => {
               </div>
 
               {/* Title */}
-              <h3 className="text-md md:text-xl font-bold text-gray-900 mb-2 line-clamp-2">
+              <h3 className="text-md md:text-md font-bold text-gray-900 mb-2 line-clamp-2">
                 <Link href={`/blogs/${blog.slug}`} className="hover:text-indigo-600 transition-colors">
                   {blog.title}
                 </Link>
