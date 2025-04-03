@@ -172,7 +172,7 @@ export default function BlogPage({ blog, recommendedBlogs = [], allCategories = 
         <meta property="og:image" content={blog.featuredImage} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:url" content={`https://applyghana.com/blogs/${blog.id}`} />
+        <meta property="og:url" content={`https://www.applyghana.com/blogs/${blog.id}`} />
         <meta property="og:site_name" content="Apply Ghana" />
         
         {/* Twitter */}
