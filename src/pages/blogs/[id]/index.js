@@ -98,7 +98,7 @@ export default function BlogPage() {
     fetchBlogData();
   }, [id]);
 
-  {/*
+  /*
   if (loading) {
     return (
       <Layout>
@@ -152,7 +152,7 @@ export default function BlogPage() {
       </Layout>
     );
   }
-*/}
+*/
   return (
     <>
     <Head>
@@ -167,7 +167,7 @@ export default function BlogPage() {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Alt text for your logo" />
-        <meta property="og:url" content={`/blogs/${id}`} />
+        <meta property="og:url" content={`applyghana.com/blogs/${id}`} />
         <meta property="og:site_name" content="Apply Ghana" />
         
         {/* Twitter */}
@@ -177,15 +177,16 @@ export default function BlogPage() {
         <meta name="twitter:image" content={blog?.featuredImage} />
         <meta name="twitter:site" content="@yourtwitterhandle" />
         
-        {/* Article-specific meta */}
-        <meta property="article:published_time" content={blog?.createdAt?.toDate?.()?.toISOString()} />
+        {/* Article-specific meta 
+        <meta property="article:published_time" content={blog.createdAt?.toDate?.()?.toISOString()} />
         {blog.updatedAt && (
-          <meta property="article:modified_time" content={blog?.updatedAt?.toDate?.()?.toISOString()} />
+          <meta property="article:modified_time" content={blog.updatedAt?.toDate?.()?.toISOString()} />
         )}
-        <meta property="article:author" content={blog?.authorName} />
-        <meta property="article:section" content={blog?.category} />
+        <meta property="article:author" content={blog.authorName} />
+        <meta property="article:section" content={blog.category} />
+        */}
       </Head>
-
+      
     <Layout>
       <BlogDetailContent blog={blog} allCategories={allCategories} />
       {recommendedBlogs.length > 0 && (
