@@ -93,25 +93,72 @@ export default function BlogPage() {
     fetchBlogData();
   }, [id]);
 
-  if (loading) {
-    return (
-      <Layout>
+  // Render metadata based on current state
+  const renderMetadata = () => {
+    if (loading) {
+      return (
         <Head>
           <title>Loading Blog Post...</title>
         </Head>
+      );
+    }
+
+    if (error) {
+      return (
+        <Head>
+          <title>{error === 'This post has been unpublished' ? 'Post Unpublished' : 'Error Loading Blog'}</title>
+        </Head>
+      );
+    }
+
+    if (!blog) {
+      return (
+        <Head>
+          <title>Blog Not Found</title>
+        </Head>
+      );
+    }
+
+    return (
+      <Head>
+        <title>{blog.title}</title>
+        <meta name="description" content={blog.excerpt} />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={blog.title} />
+        <meta property="og:description" content={blog.excerpt} />
+        <meta property="og:image" content={blog.featuredImage} />
+        <meta property="og:url" content={`https://yourdomain.com/blogs/${id}`} />
+        <meta property="og:site_name" content="Your Site Name" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={blog.title} />
+        <meta name="twitter:description" content={blog.excerpt} />
+        <meta name="twitter:image" content={blog.featuredImage} />
+        <meta name="twitter:site" content="@yourtwitterhandle" />
+        
+        {/* Article-specific meta */}
+        <meta property="article:published_time" content={blog.createdAt?.toDate?.()?.toISOString()} />
+        {blog.updatedAt && (
+          <meta property="article:modified_time" content={blog.updatedAt?.toDate?.()?.toISOString()} />
+        )}
+        <meta property="article:author" content={blog.authorName} />
+        <meta property="article:section" content={blog.category} />
+      </Head>
+    );
+  };
+
+  return (
+    <Layout>
+      {renderMetadata()}
+      
+      {loading ? (
         <div className="min-h-screen flex items-center justify-center">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500"></div>
         </div>
-      </Layout>
-    );
-  }
-
-  if (error) {
-    return (
-      <Layout>
-        <Head>
-          <title>Error Loading Blog</title>
-        </Head>
+      ) : error ? (
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center max-w-md p-6 bg-white rounded-lg shadow">
             <h1 className="text-2xl font-bold text-gray-900 mb-4">
@@ -130,16 +177,7 @@ export default function BlogPage() {
             </button>
           </div>
         </div>
-      </Layout>
-    );
-  }
-
-  if (!blog) {
-    return (
-      <Layout>
-        <Head>
-          <title>Blog Not Found</title>
-        </Head>
+      ) : !blog ? (
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-2xl font-bold text-gray-900">Blog not found</h1>
@@ -152,43 +190,13 @@ export default function BlogPage() {
             </button>
           </div>
         </div>
-      </Layout>
-    );
-  }
-
-  return (
-    <Layout>
-      <Head>
-        <title>{blog.title}</title>
-        <meta name="description" content={blog.excerpt} />
-        
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={blog.title} />
-        <meta property="og:description" content={blog.excerpt} />
-        <meta property="og:image" content={blog.featuredImage} />
-        <meta property="og:url" content={`https://www.applyghana.com/blogs/${id}`} />
-        <meta property="og:site_name" content="Apply Ghana" />
-        
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={blog.title} />
-        <meta name="twitter:description" content={blog.excerpt} />
-        <meta name="twitter:image" content={blog.featuredImage} />
-        <meta name="twitter:site" content="@yourtwitterhandle" />
-        
-        {/* Article-specific meta */}
-        <meta property="article:published_time" content={blog.createdAt?.toDate?.()?.toISOString()} />
-        {blog.updatedAt && (
-          <meta property="article:modified_time" content={blog.updatedAt?.toDate?.()?.toISOString()} />
-        )}
-        <meta property="article:author" content={blog.authorName} />
-        <meta property="article:section" content={blog.category} />
-      </Head>
-
-      <BlogDetailContent blog={blog} allCategories={allCategories} />
-      {recommendedBlogs.length > 0 && (
-        <RecommendedBlogs blogs={recommendedBlogs} currentBlogId={id} />
+      ) : (
+        <>
+          <BlogDetailContent blog={blog} allCategories={allCategories} />
+          {recommendedBlogs.length > 0 && (
+            <RecommendedBlogs blogs={recommendedBlogs} currentBlogId={id} />
+          )}
+        </>
       )}
     </Layout>
   );
