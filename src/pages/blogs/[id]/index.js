@@ -98,7 +98,6 @@ export default function BlogPage() {
     fetchBlogData();
   }, [id]);
 
-  /*
   if (loading) {
     return (
       <Layout>
@@ -152,41 +151,39 @@ export default function BlogPage() {
       </Layout>
     );
   }
-*/
+
   return (
     <>
     <Head>
-        <title>{blog?.title}</title>
-        <meta name="description" content={blog?.excerpt} />
+        <title>{blog.title}</title>
+        <meta name="description" content={blog.excerpt} />
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content={blog?.title} />
-        <meta property="og:description" content={blog?.excerpt} />
-        <meta property="og:image" content={blog?.featuredImage} />
+        <meta property="og:title" content={blog.title} />
+        <meta property="og:description" content={blog.excerpt} />
+        <meta property="og:image" content={blog.featuredImage} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Alt text for your logo" />
-        <meta property="og:url" content={`applyghana.com/blogs/${id}`} />
+        <meta property="og:url" content={`/blogs/${id}`} />
         <meta property="og:site_name" content="Apply Ghana" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={blog?.title} />
-        <meta name="twitter:description" content={blog?.excerpt} />
-        <meta name="twitter:image" content={blog?.featuredImage} />
+        <meta name="twitter:title" content={blog.title} />
+        <meta name="twitter:description" content={blog.excerpt} />
+        <meta name="twitter:image" content={blog.featuredImage} />
         <meta name="twitter:site" content="@yourtwitterhandle" />
         
-        {/* Article-specific meta 
+        {/* Article-specific meta */}
         <meta property="article:published_time" content={blog.createdAt?.toDate?.()?.toISOString()} />
         {blog.updatedAt && (
           <meta property="article:modified_time" content={blog.updatedAt?.toDate?.()?.toISOString()} />
         )}
         <meta property="article:author" content={blog.authorName} />
         <meta property="article:section" content={blog.category} />
-        */}
       </Head>
-      
     <Layout>
       <BlogDetailContent blog={blog} allCategories={allCategories} />
       {recommendedBlogs.length > 0 && (
