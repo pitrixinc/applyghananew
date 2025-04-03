@@ -167,8 +167,8 @@ export default function BlogPage() {
         <meta property="og:title" content={blog.title} />
         <meta property="og:description" content={blog.excerpt} />
         <meta property="og:image" content={blog.featuredImage} />
-        <meta property="og:url" content={`https://yourdomain.com/blogs/${id}`} />
-        <meta property="og:site_name" content="Your Site Name" />
+        <meta property="og:url" content={`https://www.applyghana.com/blogs/${id}`} />
+        <meta property="og:site_name" content="Apply Ghana" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
