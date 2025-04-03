@@ -6,6 +6,7 @@ import BlogDetailContent from "@/components/Blogs/BlogDetail/BlogDetailContent";
 import RecommendedBlogs from "@/components/Blogs/BlogDetail/RecommendedBlogs";
 import { doc, getDoc, collection, getDocs, query, where, limit } from 'firebase/firestore';
 import { db } from '@/firebase.config';
+import Head from "next/head";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -153,6 +154,34 @@ export default function BlogPage() {
 
   return (
     <Layout>
+      <Head>
+        <title>{blog.title}</title>
+        <meta name="description" content={blog.excerpt} />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={blog.title} />
+        <meta property="og:description" content={blog.excerpt} />
+        <meta property="og:image" content={blog.featuredImage} />
+        <meta property="og:url" content={`/blogs/${id}`} />
+        <meta property="og:site_name" content="Apply Ghana" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={blog.title} />
+        <meta name="twitter:description" content={blog.excerpt} />
+        <meta name="twitter:image" content={blog.featuredImage} />
+        <meta name="twitter:site" content="@yourtwitterhandle" />
+        
+        {/* Article-specific meta */}
+        <meta property="article:published_time" content={blog.createdAt?.toDate?.()?.toISOString()} />
+        {blog.updatedAt && (
+          <meta property="article:modified_time" content={blog.updatedAt?.toDate?.()?.toISOString()} />
+        )}
+        <meta property="article:author" content={blog.authorName} />
+        <meta property="article:section" content={blog.category} />
+      </Head>
+
       <BlogDetailContent blog={blog} allCategories={allCategories} />
       {recommendedBlogs.length > 0 && (
         <RecommendedBlogs blogs={recommendedBlogs} currentBlogId={id} />

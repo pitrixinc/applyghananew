@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { FiClock, FiCalendar, FiArrowRight } from 'react-icons/fi';
 import { format } from 'date-fns';
+import Image from 'next/image';
 
 const BlogDetailContent = ({ blog, allCategories }) => {
   // Format dates
@@ -24,11 +25,11 @@ const BlogDetailContent = ({ blog, allCategories }) => {
               <span className="inline-block px-3 py-1 text-sm font-semibold text-indigo-600 bg-indigo-50 rounded-full mb-4">
                 {blog?.category}
               </span>
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h1 className="text-xl md:text-4xl font-bold text-gray-900 mb-4">
                 {blog?.title}
               </h1>
               
-              <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-6">
+              <div className="flex flex-wrap items-center gap-4 text-[10px] md:text-sm text-gray-500 mb-6">
                 <div className="flex items-center">
                   <FiClock className="mr-1.5" />
                   <span>{blog?.readingTime}</span>
@@ -48,12 +49,15 @@ const BlogDetailContent = ({ blog, allCategories }) => {
 
             {/* Featured Image */}
             {blog?.featuredImage && (
-              <div className="mb-8 rounded-xl overflow-hidden">
-                <img
-                  src={blog.featuredImage}
-                  alt={blog.title}
-                  className="w-full h-auto object-cover rounded-xl"
-                />
+              <div className="aspect-[1.91] w-full bg-gray-100 rounded-xl overflow-hidden">
+                <Image
+                    src={blog.featuredImage}
+                    alt={`Featured image for ${blog.title}`}
+                    width={1200}
+                    height={630}
+                    priority
+                    className="rounded-xl"
+                    />
               </div>
             )}
 
