@@ -21,7 +21,7 @@ export default function Blogs() {
   const [latestBlogs, setLatestBlogs] = useState([]);
   const [categoriesWithBlogs, setCategoriesWithBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
-
+{/* without any blog drafting - displays all blogs even once that have been drafted and not yet published
   useEffect(() => {
     const fetchBlogData = async () => {
       try {
@@ -70,6 +70,54 @@ export default function Blogs() {
 
     fetchBlogData();
   }, []);
+  */}
+
+  useEffect(() => {
+    const fetchBlogData = async () => {
+      try {
+        setLoading(true);
+  
+        // Fetch all blogs (without filtering in Firestore)
+        const allBlogsQuery = query(collection(db, "blogs"));
+        const allBlogsSnapshot = await getDocs(allBlogsQuery);
+        let allBlogsData = allBlogsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  
+        // **Manually filter**: Only include published blogs
+        allBlogsData = allBlogsData.filter(blog => blog.published === true);
+  
+        // **Manually sort** by createdAt (if available)
+        allBlogsData.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+  
+        // Fetch latest 12 blogs
+        const latestData = allBlogsData.slice(0, 12);
+        setLatestBlogs(latestData);
+  
+        // Group by category
+        const categoriesMap = {};
+        allBlogsData.forEach(blog => {
+          if (!categoriesMap[blog.category]) {
+            categoriesMap[blog.category] = [];
+          }
+          categoriesMap[blog.category].push(blog);
+        });
+  
+        // Transform to array and limit to 12 blogs per category
+        const categoriesArray = Object.keys(categoriesMap).map(category => ({
+          category,
+          blogs: categoriesMap[category].slice(0, 12),
+        }));
+  
+        setCategoriesWithBlogs(categoriesArray);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching blog data:", error);
+        setLoading(false);
+      }
+    };
+  
+    fetchBlogData();
+  }, []);
+  
 
   return (
     <Layout>

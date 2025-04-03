@@ -108,7 +108,7 @@ const BlogCategoryContent = ({
 
                         {/* Title */}
                         <h3 className="text-md font-bold text-gray-900 mb-2 line-clamp-2">
-                          <Link href={`/blogs/${blog.slug}`} className="hover:text-indigo-600 transition-colors">
+                          <Link href={`/blogs/${blog.id}`} className="hover:text-indigo-600 transition-colors">
                             {blog.title}
                           </Link>
                         </h3>
@@ -123,7 +123,7 @@ const BlogCategoryContent = ({
                             <span>{blog.readingTime}</span>
                           </div>
                           <Link 
-                            href={`/blogs/${blog.slug}`} 
+                            href={`/blogs/${blog.id}`} 
                             className="text-sm font-medium text-indigo-600 hover:text-indigo-800 flex items-center"
                           >
                             Read <FiArrowRight className="ml-1" />

@@ -68,7 +68,8 @@ export default function BlogCategoryPage() {
         // Fetch blogs for current category using the exact category name from Firestore
         const categoryQuery = query(
           collection(db, 'blogs'),
-          where('category', '==', matchedCategory)
+          where('category', '==', matchedCategory),
+          where('published', '==', true)
         );
         const categorySnapshot = await getDocs(categoryQuery);
         const categoryBlogsData = categorySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));

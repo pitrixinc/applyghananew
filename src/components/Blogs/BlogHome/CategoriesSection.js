@@ -94,7 +94,7 @@ const CategoriesSection = ({ categoriesWithBlogs }) => {
                       <div className="p-5 flex flex-col flex-grow">
                         {/* Title */}
                         <h3 className="text-md font-bold text-gray-900 mb-2 line-clamp-2">
-                          <Link href={`/blogs/${blog.slug}`} className="hover:text-indigo-600 transition-colors">
+                          <Link href={`/blogs/${blog.id}`} className="hover:text-indigo-600 transition-colors">
                             {blog.title}
                           </Link>
                         </h3>
@@ -106,7 +106,7 @@ const CategoriesSection = ({ categoriesWithBlogs }) => {
                         <div className="mt-auto flex items-center justify-between">
                           <span className="text-sm text-gray-500">{blog.readingTime}</span>
                           <Link 
-                            href={`/blogs/${blog.slug}`} 
+                            href={`/blogs/${blog.id}`} 
                             className="text-sm font-medium text-indigo-600 hover:text-indigo-800 flex items-center"
                           >
                             Read more <FiArrowRight className="ml-1" />

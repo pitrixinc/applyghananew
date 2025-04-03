@@ -26,3 +26,68 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 */
+
+
+
+/* WYSIWYG Content Styling */
+.prose {
+  color: #374151;
+  line-height: 1.75;
+}
+
+.prose img {
+  border-radius: 0.5rem;
+  margin: 1.5rem auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.prose iframe {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-radius: 0.5rem;
+  aspect-ratio: 16/9;
+}
+
+.prose h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #111827;
+}
+
+.prose h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+  color: #111827;
+}
+
+.prose p {
+  margin-bottom: 1.25rem;
+}
+
+.prose ul,
+.prose ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+}
+
+.prose a {
+  color: #4f46e5;
+  text-decoration: underline;
+}
+
+.prose blockquote {
+  border-left: 4px solid #e5e7eb;
+  padding-left: 1rem;
+  font-style: italic;
+  color: #6b7280;
+  margin: 1.5rem 0;
+}
