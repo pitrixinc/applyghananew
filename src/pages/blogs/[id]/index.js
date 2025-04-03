@@ -143,7 +143,7 @@ export default function BlogPage() {
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-2xl font-bold text-gray-900">Blog not found</h1>
-            <p className="mt-2 text-gray-600">The blog you're looking for doesn't exist.</p>
+            <p className="mt-2 text-gray-600">The blog you&apos;re looking for doesn&apos;t exist.</p>
             <button
               onClick={() => router.push('/blogs')}
               className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition-colors"
