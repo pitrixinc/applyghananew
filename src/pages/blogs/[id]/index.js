@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useRouter } from 'next/router';
 import { Geist, Geist_Mono } from "next/font/google";
 import Layout from "@/components/Home/layout";
@@ -18,87 +18,88 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export default function BlogPage() {
-  const router = useRouter();
-  const { id } = router.query;
-  const [blog, setBlog] = useState(null);
-  const [allCategories, setAllCategories] = useState([]);
-  const [recommendedBlogs, setRecommendedBlogs] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+export async function getServerSideProps(context) {
+  const { id } = context.params;
 
-  useEffect(() => {
-    const fetchBlogData = async () => {
-      if (!id) return;
-      
-      try {
-        setLoading(true);
-        setError(null);
-        
-        // Fetch the specific blog by ID
-        const blogRef = doc(db, 'blogs', id);
-        const blogSnap = await getDoc(blogRef);
-        
-        if (blogSnap.exists()) {
-          const blogData = blogSnap.data();
-          
-          // Check if blog is published
-          if (blogData.published === false) {
-            setError('This post has been unpublished');
-            setLoading(false);
-            return;
-          }
+  try {
+    // Fetch the specific blog by ID
+    const blogRef = doc(db, 'blogs', id);
+    const blogSnap = await getDoc(blogRef);
+    
+    if (!blogSnap.exists()) {
+      return {
+        notFound: true,
+      };
+    }
 
-          // Ensure we have all required fields
-          if (!blogData.title || !blogData.content) {
-            throw new Error('Blog data is incomplete');
-          }
-          
-          setBlog({ id: blogSnap.id, ...blogData });
+    const blogData = blogSnap.data();
+    
+    // Check if blog is published
+    if (blogData.published === false) {
+      return {
+        props: {
+          error: 'This post has been unpublished',
+        },
+      };
+    }
 
-          // Fetch recommended blogs from same category
-          if (blogData.category) {
-            const recommendedQuery = query(
-              collection(db, 'blogs'),
-              where('category', '==', blogData.category),
-              where('published', '==', true),
-              where('__name__', '!=', id), // Exclude current blog
-              limit(5)
-            );
-            const recommendedSnapshot = await getDocs(recommendedQuery);
-            const recommendedData = recommendedSnapshot.docs.map(doc => ({
-              id: doc.id,
-              ...doc.data()
-            }));
-            setRecommendedBlogs(recommendedData);
-          }
-        } else {
-          setError('Blog not found');
-          return;
-        }
+    // Ensure we have all required fields
+    if (!blogData.title || !blogData.content) {
+      throw new Error('Blog data is incomplete');
+    }
 
-        // Fetch all categories
-        const blogsQuery = collection(db, 'blogs');
-        const querySnapshot = await getDocs(blogsQuery);
-        const categories = [...new Set(
-          querySnapshot.docs
-            .map(doc => doc.data().category)
-            .filter(Boolean)
-        )];
-        setAllCategories(categories);
+    // Fetch recommended blogs from same category
+    let recommendedBlogs = [];
+    if (blogData.category) {
+      const recommendedQuery = query(
+        collection(db, 'blogs'),
+        where('category', '==', blogData.category),
+        where('published', '==', true),
+        where('__name__', '!=', id),
+        limit(5)
+      );
+      const recommendedSnapshot = await getDocs(recommendedQuery);
+      recommendedBlogs = recommendedSnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+    }
 
-        setLoading(false);
-      } catch (err) {
-        console.error('Error fetching blog data:', err);
-        setError(err.message || 'Failed to load blog');
-        setLoading(false);
-      }
+    // Fetch all categories
+    const blogsQuery = collection(db, 'blogs');
+    const querySnapshot = await getDocs(blogsQuery);
+    const allCategories = [...new Set(
+      querySnapshot.docs
+        .map(doc => doc.data().category)
+        .filter(Boolean)
+    )];
+
+    return {
+      props: {
+        blog: {
+          id: blogSnap.id,
+          ...blogData,
+          createdAt: blogData.createdAt?.toDate()?.toISOString() || null,
+          updatedAt: blogData.updatedAt?.toDate()?.toISOString() || null,
+        },
+        recommendedBlogs,
+        allCategories,
+      },
     };
+  } catch (err) {
+    console.error('Error fetching blog data:', err);
+    return {
+      props: {
+        error: err.message || 'Failed to load blog',
+      },
+    };
+  }
+}
 
-    fetchBlogData();
-  }, [id]);
+export default function BlogPage({ blog, recommendedBlogs = [], allCategories = [], error }) {
+  const router = useRouter();
 
-  if (loading) {
+  if (router.isFallback) {
     return (
       <Layout>
         <div className="min-h-screen flex items-center justify-center">
@@ -111,6 +112,9 @@ export default function BlogPage() {
   if (error) {
     return (
       <Layout>
+        <Head>
+          <title>{error === 'This post has been unpublished' ? 'Post Unpublished' : 'Error Loading Blog'}</title>
+        </Head>
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center max-w-md p-6 bg-white rounded-lg shadow">
             <h1 className="text-2xl font-bold text-gray-900 mb-4">
@@ -136,10 +140,13 @@ export default function BlogPage() {
   if (!blog) {
     return (
       <Layout>
+        <Head>
+          <title>Blog Not Found</title>
+        </Head>
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-2xl font-bold text-gray-900">Blog not found</h1>
-            <p className="mt-2 text-gray-600">The blog you&apos;re looking for doesn&apos;t exist.</p>
+            <p className="mt-2 text-gray-600">The blog you're looking for doesn't exist.</p>
             <button
               onClick={() => router.push('/blogs')}
               className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition-colors"
@@ -154,7 +161,7 @@ export default function BlogPage() {
 
   return (
     <>
-    <Head>
+      <Head>
         <title>{blog.title}</title>
         <meta name="description" content={blog.excerpt} />
         
@@ -165,8 +172,7 @@ export default function BlogPage() {
         <meta property="og:image" content={blog.featuredImage} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Alt text for your logo" />
-        <meta property="og:url" content={`applyghana.com/blogs/${id}`} />
+        <meta property="og:url" content={`https://applyghana.com/blogs/${blog.id}`} />
         <meta property="og:site_name" content="Apply Ghana" />
         
         {/* Twitter */}
@@ -174,22 +180,24 @@ export default function BlogPage() {
         <meta name="twitter:title" content={blog.title} />
         <meta name="twitter:description" content={blog.excerpt} />
         <meta name="twitter:image" content={blog.featuredImage} />
-        <meta name="twitter:site" content="@yourtwitterhandle" />
         
         {/* Article-specific meta */}
-        <meta property="article:published_time" content={blog.createdAt?.toDate?.()?.toISOString()} />
+        {blog.createdAt && (
+          <meta property="article:published_time" content={blog.createdAt} />
+        )}
         {blog.updatedAt && (
-          <meta property="article:modified_time" content={blog.updatedAt?.toDate?.()?.toISOString()} />
+          <meta property="article:modified_time" content={blog.updatedAt} />
         )}
         <meta property="article:author" content={blog.authorName} />
         <meta property="article:section" content={blog.category} />
       </Head>
-    <Layout>
-      <BlogDetailContent blog={blog} allCategories={allCategories} />
-      {recommendedBlogs.length > 0 && (
-        <RecommendedBlogs blogs={recommendedBlogs} currentBlogId={id} />
-      )}
-    </Layout>
+      
+      <Layout>
+        <BlogDetailContent blog={blog} allCategories={allCategories} />
+        {recommendedBlogs.length > 0 && (
+          <RecommendedBlogs blogs={recommendedBlogs} currentBlogId={blog.id} />
+        )}
+      </Layout>
     </>
   );
 }
