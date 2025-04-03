@@ -79,8 +79,8 @@ export async function getServerSideProps(context) {
         blog: {
           id: blogSnap.id,
           ...blogData,
-          createdAt: blogData.createdAt?.toDate()?.toISOString() || null,
-          updatedAt: blogData.updatedAt?.toDate()?.toISOString() || null,
+        //  createdAt: blogData.createdAt?.toDate()?.toISOString() || null,
+        //  updatedAt: blogData.updatedAt?.toDate()?.toISOString() || null,
         },
         recommendedBlogs,
         allCategories,
@@ -181,13 +181,14 @@ export default function BlogPage({ blog, recommendedBlogs = [], allCategories = 
         <meta name="twitter:description" content={blog.excerpt} />
         <meta name="twitter:image" content={blog.featuredImage} />
         
-        {/* Article-specific meta */}
+        {/* Article-specific meta 
         {blog.createdAt && (
           <meta property="article:published_time" content={blog.createdAt} />
         )}
         {blog.updatedAt && (
           <meta property="article:modified_time" content={blog.updatedAt} />
         )}
+          */}
         <meta property="article:author" content={blog.authorName} />
         <meta property="article:section" content={blog.category} />
       </Head>
