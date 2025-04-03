@@ -163,6 +163,9 @@ export default function BlogPage() {
         <meta property="og:title" content={blog.title} />
         <meta property="og:description" content={blog.excerpt} />
         <meta property="og:image" content={blog.featuredImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Alt text for your logo" />
         <meta property="og:url" content={`/blogs/${id}`} />
         <meta property="og:site_name" content="Apply Ghana" />
         
