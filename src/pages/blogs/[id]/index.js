@@ -97,7 +97,7 @@ export default function BlogPage() {
 
     fetchBlogData();
   }, [id]);
-
+{/*
   if (loading) {
     return (
       <Layout>
@@ -151,10 +151,10 @@ export default function BlogPage() {
       </Layout>
     );
   }
-
+*/}
   return (
-    <Layout>
-      <Head>
+    <>
+    <Head>
         <title>{blog.title}</title>
         <meta name="description" content={blog.excerpt} />
         
@@ -185,10 +185,12 @@ export default function BlogPage() {
         <meta property="article:section" content={blog.category} />
       </Head>
 
+    <Layout>
       <BlogDetailContent blog={blog} allCategories={allCategories} />
       {recommendedBlogs.length > 0 && (
         <RecommendedBlogs blogs={recommendedBlogs} currentBlogId={id} />
       )}
     </Layout>
+    </>
   );
 }
