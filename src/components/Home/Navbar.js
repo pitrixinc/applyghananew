@@ -93,6 +93,13 @@ const Navbar = () => {
               FAQ
             </Link>
           </li>
+
+          <li>
+            <Link href="/testimonials" className="flex items-center text-sm font-semibold gap-2 hover:text-blue-600 transition">
+              <FaQuestionCircle className="text-md" />
+              Testimonials
+            </Link>
+          </li>
         
           <li>
             <Link href="/blogs" className="flex items-center text-sm font-semibold gap-2 hover:text-blue-600 transition">
@@ -126,6 +133,9 @@ const Navbar = () => {
             </li>
             <li>
               <Link href="/faq" className="block hover:text-blue-600 transition">FAQ</Link>
+            </li>
+            <li>
+              <Link href="/testimonials" className="block hover:text-blue-600 transition">Testimonials</Link>
             </li>
            
             <li>

@@ -31,7 +31,7 @@ const BlogDetailContent = ({ blog, allCategories }) => {
           <div className="lg:w-3/4">
             {/* Blog Header */}
             <div className="mb-8">
-              <span className="inline-block px-3 py-1 text-sm font-semibold text-indigo-600 bg-indigo-50 rounded-full mb-4">
+              <span className="inline-block px-3 py-1 text-sm font-semibold text-green-600 bg-green-50 rounded-full mb-4">
                 {blog?.category}
               </span>
               <h1 className="text-xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -90,7 +90,7 @@ const BlogDetailContent = ({ blog, allCategories }) => {
                       href={`/blogs/category/${category.toLowerCase().replace(/\s+/g, '-')}`}
                       className={`flex items-center justify-between px-4 py-3 rounded-lg transition-colors ${
                         category === blog?.category
-                          ? 'bg-indigo-100 text-indigo-700 font-medium'
+                          ? 'bg-green-100 text-green-700 font-medium'
                           : 'bg-white hover:bg-gray-100 text-gray-700'
                       }`}
                     >

@@ -164,7 +164,7 @@ const BlogCategoryContent = ({
                         href={`/blogs/category/${category.toLowerCase().replace(/\s+/g, '-')}`}
                         className={`flex items-center justify-between px-4 py-3 rounded-lg transition-colors ${
                           category === currentCategory
-                            ? 'bg-indigo-100 text-indigo-700 font-medium'
+                            ? 'bg-green-100 text-green-700 font-medium'
                             : 'bg-white hover:bg-gray-100 text-gray-700'
                         }`}
                       >

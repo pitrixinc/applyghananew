@@ -65,7 +65,7 @@ const ServiceDetails = ({ service }) => {
                 <div className="prose max-w-none text-gray-600">
                   {service.description}
                 </div>
-
+{/*
                 <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="bg-blue-50 p-4 rounded-lg">
                     <h4 className="font-semibold text-gray-700 flex items-center mb-2">
@@ -106,9 +106,11 @@ const ServiceDetails = ({ service }) => {
                     </div>
                   )}
                 </div>
+                 */}
               </div>
             </div>
           </div>
+          
 
           <div>
             <div className="bg-white rounded-xl shadow-md overflow-hidden sticky top-8">
