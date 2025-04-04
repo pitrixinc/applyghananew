@@ -18,6 +18,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Helper function to convert Firestore data to serializable format
+const serializeBlogData = (blogData) => {
+  return {
+    ...blogData,
+    createdAt: blogData.createdAt?.toDate()?.toISOString() || null,
+    updatedAt: blogData.updatedAt?.toDate()?.toISOString() || null
+  };
+};
+
 export async function getServerSideProps(context) {
   const { id } = context.params;
 
@@ -61,7 +70,7 @@ export async function getServerSideProps(context) {
       const recommendedSnapshot = await getDocs(recommendedQuery);
       recommendedBlogs = recommendedSnapshot.docs.map(doc => ({
         id: doc.id,
-        ...doc.data()
+        ...serializeBlogData(doc.data()) // Serialize each recommended blog
       }));
     }
 
@@ -78,9 +87,7 @@ export async function getServerSideProps(context) {
       props: {
         blog: {
           id: blogSnap.id,
-          ...blogData,
-        //  createdAt: blogData.createdAt?.toDate()?.toISOString() || null,
-        //  updatedAt: blogData.updatedAt?.toDate()?.toISOString() || null,
+          ...serializeBlogData(blogData) // Serialize main blog data
         },
         recommendedBlogs,
         allCategories,
@@ -146,7 +153,7 @@ export default function BlogPage({ blog, recommendedBlogs = [], allCategories = 
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-2xl font-bold text-gray-900">Blog not found</h1>
-            <p className="mt-2 text-gray-600">The blog you&apod;re looking for doesn&apos;t exist.</p>
+            <p className="mt-2 text-gray-600">The blog you're looking for doesn't exist.</p>
             <button
               onClick={() => router.push('/blogs')}
               className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition-colors"
@@ -181,22 +188,29 @@ export default function BlogPage({ blog, recommendedBlogs = [], allCategories = 
         <meta name="twitter:description" content={blog.excerpt} />
         <meta name="twitter:image" content={blog.featuredImage} />
         
-        {/* Article-specific meta 
+        {/* Article-specific meta */}
         {blog.createdAt && (
           <meta property="article:published_time" content={blog.createdAt} />
         )}
         {blog.updatedAt && (
           <meta property="article:modified_time" content={blog.updatedAt} />
         )}
-          */}
         <meta property="article:author" content={blog.authorName} />
         <meta property="article:section" content={blog.category} />
       </Head>
       
       <Layout>
-        <BlogDetailContent blog={blog} allCategories={allCategories} />
+        <BlogDetailContent blog={{
+          ...blog,
+          createdAt: blog.createdAt ? new Date(blog.createdAt) : null,
+          updatedAt: blog.updatedAt ? new Date(blog.updatedAt) : null
+        }} allCategories={allCategories} />
         {recommendedBlogs.length > 0 && (
-          <RecommendedBlogs blogs={recommendedBlogs} currentBlogId={blog.id} />
+          <RecommendedBlogs blogs={recommendedBlogs.map(blog => ({
+            ...blog,
+            createdAt: blog.createdAt ? new Date(blog.createdAt) : null,
+            updatedAt: blog.updatedAt ? new Date(blog.updatedAt) : null
+          }))} currentBlogId={blog.id} />
         )}
       </Layout>
     </>

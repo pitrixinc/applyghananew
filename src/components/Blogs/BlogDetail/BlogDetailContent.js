@@ -5,13 +5,22 @@ import { format } from 'date-fns';
 import Image from 'next/image';
 
 const BlogDetailContent = ({ blog, allCategories }) => {
+  // Convert ISO strings back to Date objects if needed
+  const createdAtDate = blog?.createdAt instanceof Date 
+    ? blog.createdAt 
+    : blog?.createdAt ? new Date(blog.createdAt) : null;
+  
+  const updatedAtDate = blog?.updatedAt instanceof Date 
+    ? blog.updatedAt 
+    : blog?.updatedAt ? new Date(blog.updatedAt) : null;
+
   // Format dates
-  const createdAt = blog?.createdAt?.toDate
-    ? format(blog.createdAt.toDate(), 'MMMM dd, yyyy')
+  const createdAt = createdAtDate 
+    ? format(createdAtDate, 'MMMM dd, yyyy') 
     : 'Unknown date';
   
-  const updatedAt = blog?.updatedAt?.toDate
-    ? format(blog.updatedAt.toDate(), 'MMMM dd, yyyy')
+  const updatedAt = updatedAtDate 
+    ? format(updatedAtDate, 'MMMM dd, yyyy') 
     : null;
 
   return (
@@ -51,13 +60,13 @@ const BlogDetailContent = ({ blog, allCategories }) => {
             {blog?.featuredImage && (
               <div className="aspect-[1.91] w-full bg-gray-100 rounded-xl overflow-hidden">
                 <Image
-                    src={blog.featuredImage}
-                    alt={`Featured image for ${blog.title}`}
-                    width={1200}
-                    height={630}
-                    priority
-                    className="rounded-xl"
-                    />
+                  src={blog.featuredImage}
+                  alt={`Featured image for ${blog.title}`}
+                  width={1200}
+                  height={630}
+                  priority
+                  className="rounded-xl object-cover"
+                />
               </div>
             )}
 
