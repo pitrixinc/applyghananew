@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { FaBars, FaInfoCircle, FaNewspaper, FaQuestionCircle, FaStar, FaTimes } from "react-icons/fa";
+import { FaBars, FaInfoCircle, FaNewspaper, FaPeopleArrows, FaQuestionCircle, FaStar, FaTimes } from "react-icons/fa";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import { MdHomeRepairService } from "react-icons/md";
 import { db } from "@/firebase.config"; // Ensure your Firebase config is imported
@@ -96,7 +96,7 @@ const Navbar = () => {
 
           <li>
             <Link href="/testimonials" className="flex items-center text-sm font-semibold gap-2 hover:text-blue-600 transition">
-              <FaQuestionCircle className="text-md" />
+              <FaPeopleArrows className="text-md" />
               Testimonials
             </Link>
           </li>
