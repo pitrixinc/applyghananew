@@ -6,6 +6,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Layout from "@/components/Home/layout";
 import ServiceHero from "@/components/Services/Service/ServiceHero";
 import ServiceDetails from "@/components/Services/Service/ServiceDetails";
+import ServiceForms from "@/components/Services/Service/ServiceForms";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,13 +31,30 @@ export async function getServerSideProps(context) {
       };
     }
 
-    const service = {
+    const serviceData = serviceSnap.data();
+    
+    // Convert Firestore Timestamps to ISO strings or numbers
+    const serializedService = {
       id,
-      ...serviceSnap.data(),
+      ...serviceData,
+      dateCreated: serviceData.dateCreated?.toDate().toISOString() || null,
+      // Add other timestamp fields if they exist
+      // updatedAt: serviceData.updatedAt?.toDate().toISOString() || null,
     };
 
+    // Handle nested objects that might contain Timestamps
+    if (serviceData.contactForm) {
+      serializedService.contactForm = JSON.parse(JSON.stringify(serviceData.contactForm));
+    }
+    
+    if (serviceData.applyNowForm) {
+      serializedService.applyNowForm = JSON.parse(JSON.stringify(serviceData.applyNowForm));
+    }
+
     return {
-      props: { service },
+      props: { 
+        service: serializedService 
+      },
     };
   } catch (error) {
     console.error("Error fetching service details:", error);
@@ -81,6 +99,7 @@ export default function ServicePage({ service }) {
             imageUrl={service.imageUrl}
           />
           <ServiceDetails service={service} />
+          <ServiceForms service={service} />
         </>
       )}
     </Layout>

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@paystack/inline-js": "^2.22.2",
     "date-fns": "^4.1.0",
     "firebase": "^11.5.0",
     "framer-motion": "^12.5.0",
