@@ -10,16 +10,20 @@
   },
   "dependencies": {
     "@paystack/inline-js": "^2.22.2",
+    "chart.js": "^4.5.1",
     "date-fns": "^4.1.0",
     "firebase": "^11.5.0",
     "framer-motion": "^12.5.0",
     "next": "^15.1.9",
     "nodemailer": "^6.10.0",
     "react": "^19.0.0",
+    "react-chartjs-2": "^5.3.1",
+    "react-datepicker": "^9.1.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
     "react-quill-new": "^3.4.6",
-    "react-toastify": "^11.0.5"
+    "react-toastify": "^11.0.5",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

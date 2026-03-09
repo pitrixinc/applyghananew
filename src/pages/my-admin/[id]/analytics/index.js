@@ -1,0 +1,26 @@
+import Image from "next/image";
+import { Geist, Geist_Mono } from "next/font/google";
+import VisitorsAnalyticsPage from "@/components/SuperAdmin/VisitorAnalyticsPage/VisitorAnalyticsPage";
+import Layout from "@/components/SuperAdmin/Layout/layout";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export default function Home() {
+  return (
+    <Layout
+      className={`${geistSans.className} ${geistMono.className}`}
+    >
+      <main className="">
+        <VisitorsAnalyticsPage/>
+      </main>
+    </Layout>
+  );
+}
