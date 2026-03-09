@@ -90,6 +90,12 @@ const Navbar = () => {
               Blogs
             </Link>
           </li>
+          <li>
+            <Link href={`/my-admin/${userDetails?.uid}/analytics`} className="flex items-center text-sm font-semibold gap-2 hover:text-blue-600 transition">
+              <FaCogs className="text-md" />
+              Analytics
+            </Link>
+          </li>
         </ul>
 
         {/* Login Button - Desktop */}
@@ -128,6 +134,9 @@ const Navbar = () => {
             </li>
             <li>
               <Link href={`/my-admin/${userDetails?.uid}/blogs`} className="block hover:text-blue-600 transition">Blogs</Link>
+            </li>
+            <li>
+              <Link href={`/my-admin/${userDetails?.uid}/analytics`} className="block hover:text-blue-600 transition">Analytics</Link>
             </li>
           </ul>
 
