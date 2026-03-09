@@ -210,7 +210,7 @@ export default function UserSignin() {
                         Reset your password
                       </h3>
                       <p className="text-sm text-gray-600 mb-6">
-                        Enter your email address and we'll send you a secure link to reset your password.
+                        Enter your email address and we&apo;ll send you a secure link to reset your password.
                       </p>
                       
                       {resetSuccess ? (
@@ -224,11 +224,11 @@ export default function UserSignin() {
                           </div>
                           <h4 className="text-lg font-semibold text-gray-900 mb-2">Check your inbox!</h4>
                           <p className="text-sm text-gray-600 mb-4">
-                            We've sent a password reset link to:<br />
+                            We&apo;ve sent a password reset link to:<br />
                             <span className="font-medium text-green-600">{resetEmail}</span>
                           </p>
                           <p className="text-xs text-gray-500">
-                            Didn't receive it? Check your spam folder or{' '}
+                            Didn&apo;t receive it? Check your spam folder or{' '}
                             <button 
                               onClick={() => {
                                 setResetSuccess(false);
@@ -274,7 +274,7 @@ export default function UserSignin() {
                               </svg>
                               <p className="text-xs text-blue-700">
                                 The reset link will expire in 1 hour for security reasons. 
-                                If you don't see the email, check your spam folder.
+                                If you don&apo;t see the email, check your spam folder.
                               </p>
                             </div>
                           </div>
