@@ -169,7 +169,7 @@ export default function HeroSection() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-green-50 to-emerald-50 border border-green-100 mb-8"
             >
               <HiOutlineSparkles className="w-4 h-4 text-green-600" />
-              <span className="text-sm font-medium text-green-700">Ghana's Premier Educational Consult</span>
+              <span className="text-sm font-medium text-green-700">Ghana&apos;s Premier Educational Consult</span>
             </motion.div>
 
             {/* Main Headline */}
@@ -195,7 +195,7 @@ export default function HeroSection() {
               className="mt-6 text-lg text-gray-600 leading-relaxed max-w-xl"
             >
               Empowering Ghanaian students to achieve academic excellence abroad. 
-              With 15+ years of experience, we've guided thousands to top universities 
+              With 15+ years of experience, we&apos;ve guided thousands to top universities 
               worldwide, ensuring every step of your journey is seamless.
             </motion.p>
 
