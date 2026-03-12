@@ -475,7 +475,7 @@ export default function TrustedPartners() {
               transition={{ delay: 0.4 }}
               className="text-lg text-gray-600 leading-relaxed"
             >
-              We've established strong partnerships with leading universities in Ghana and abroad, 
+              We&apos;ve established strong partnerships with leading universities in Ghana and abroad, 
               ensuring our students have access to quality education worldwide.
             </motion.p>
           </motion.div>
