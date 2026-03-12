@@ -7,6 +7,7 @@ import WhyChooseUs from "@/components/Home/WhyChooseUs";
 import How from "@/components/Home/How";
 import Testimonial from "@/components/Home/Testimonial";
 import CTA from "@/components/Home/CTA";
+import TrustedPartners from "@/components/Home/TrustedPartners";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,8 +25,9 @@ export default function Home() {
           <Hero/>
           <Services/>
           <WhyChooseUs/>
-          <How/>
+        {/*  <How/> */}
           <Testimonial/>
+          <TrustedPartners/>
           <CTA/>
           {/** 
         <Image
