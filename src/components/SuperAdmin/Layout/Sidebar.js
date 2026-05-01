@@ -12,7 +12,9 @@ import {
   FiUser,
   FiMail,
   FiChevronLeft,
-  FiChevronRight
+  FiChevronRight,
+  FiCrosshair,
+  FiUsers
 } from "react-icons/fi";
 import { doc, getDoc } from "firebase/firestore";
 import { signOut } from "firebase/auth";
@@ -35,6 +37,7 @@ const Sidebar = ({ children }) => {
     { href: `/my-admin/${id}/dashboard`, label: "Dashboard", icon: FiHome },
     { href: `/my-admin/${id}/services`, label: "Services", icon: FiBriefcase },
     { href: `/my-admin/${id}/blogs`, label: "Blogs", icon: FiBookOpen },
+    { href: `/my-admin/${id}/schools`, label: "Manage Schools", icon: FiUsers },
     { href: `/my-admin/${id}/analytics`, label: "Analytics", icon: FiBarChart2 },
     { href: `/my-admin/${id}/pages/home`, label: "Customize Home Page", icon: FiHome },
   ];
