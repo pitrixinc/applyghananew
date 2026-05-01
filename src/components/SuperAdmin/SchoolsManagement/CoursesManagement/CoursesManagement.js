@@ -112,12 +112,31 @@ export default function CoursesManagement() {
   });
 
   // Common subjects list for suggestions
+  // Common subjects list for suggestions
   const commonSubjects = [
-    'Mathematics', 'English', 'Science', 'Social Studies', 'Physics', 'Chemistry', 
-    'Biology', 'Economics', 'Accounting', 'Business Management', 'Geography', 
-    'History', 'Government', 'Literature', 'French', 'Spanish', 'Computing', 
-    'ICT', 'Physical Education', 'Religious Studies', 'Integrated Science', 
-    'Core Mathematics', 'Elective Mathematics', 'General Arts', 'Visual Arts'
+      "English Language", "Mathematics", "Integrated Science", "Social Studies", "Religious and Moral Education (RME)", "Information and Communication Technology (ICT)", 
+      "Career Technology", "Creative Arts and Design", "Physical and Health Education (PHE)", "Ghanaian Language",
+
+    "English Language", "Core Mathematics", "Integrated Science", "Social Studies", "Elective Mathematics", "Physics", "Chemistry", "Biology", "General Agriculture", 
+    "Animal Husbandry", "Crop Husbandry", "Economics", "Geography", "History", "Government", "Literature in English", "French", "Ghanaian Language", 
+    "Christian Religious Studies", "Islamic Religious Studies", "Financial Accounting", "Cost Accounting", "Business Management", "Principles of Costing", "Elective ICT", 
+    "Graphic Design", "Picture Making", "Textiles", "Sculpture", "Ceramics", "Leatherwork", "Basketry", "Jewellery", "Management in Living", "Food and Nutrition", 
+    "Clothing and Textiles", "Biology (Home Economics)", "Physics (Technical)", "Applied Electricity", "Electronics", "Technical Drawing", "Building Construction", "Woodwork", 
+    "Metalwork", "Auto Mechanics", "Engineering Science", "ICT", "Physical Education", "Music", "Dance", "Theatre Arts",
+
+    "Philosophy","Theology","Religious Studies","Languages","Linguistics","Literature","Creative Writing","Classics","Archaeology","Music","Dance","Theatre","Film Studies",
+    "Fine Arts","Art History","Sociology","Psychology","Anthropology","Political Science","International Relations","Economics","Human Geography","Criminology","Social Work",
+    "Development Studies","Public Administration","Gender Studies","Cultural Studies","Physics","Chemistry","Biology","Mathematics","Statistics","Astronomy","Earth Science",
+    "Environmental Science","Geology","Oceanography","Ecology","Mechanical Engineering","Civil Engineering","Electrical Engineering","Electronic Engineering",
+    "Chemical Engineering","Aerospace Engineering","Biomedical Engineering","Computer Engineering","Software Engineering","Information Technology","Data Science",
+    "Artificial Intelligence","Cybersecurity","Robotics","Business Administration","Management","Accounting","Finance","Marketing","Entrepreneurship",
+    "Human Resource Management","Operations Management","Supply Chain Management","International Business","Law","International Law","Criminal Law","Corporate Law",
+    "Human Rights Law","Medicine","Nursing","Pharmacy","Dentistry","Public Health","Physiotherapy","Occupational Therapy","Nutrition","Medical Laboratory Science","Radiography",
+    "Education","Early Childhood Education","Primary Education","Secondary Education","Special Education","Educational Leadership","Agriculture","Agronomy","Horticulture",
+    "Animal Science","Forestry","Fisheries","Environmental Management","Journalism","Mass Communication","Media Studies","Public Relations","Advertising","Digital Media",
+    "Architecture","Urban Planning","Landscape Architecture","Interior Design","Graphic Design","Industrial Design","Fashion Design","Hospitality Management",
+    "Tourism Management","Culinary Arts","Event Management","Cognitive Science","Neuroscience","Biotechnology","Nanotechnology","Sustainability Studies","Global Studies",
+    "Peace and Conflict Studies","Game Design","Sports Science"
   ];
 
   useEffect(() => {
@@ -634,9 +653,21 @@ export default function CoursesManagement() {
     const [newHighlight, setNewHighlight] = useState('');
     const [newCareerPath, setNewCareerPath] = useState('');
 
-    const departments = [
-      'Computer Science', 'Engineering', 'Business', 'Medicine', 'Law',
-      'Arts', 'Sciences', 'Education', 'Agriculture', 'Social Sciences'
+    const departments = ["General Science", "General Arts", "Business", "Visual Arts", "Home Economics", "Agricultural Science", 
+      "Technical", "Vocational Skills", "Information and Communication Technology (ICT)", "Performing Arts", "Languages", "Pure Science",
+      "Applied Science", "Engineering Science", "Building Construction", "Electricals/Electronics", "Auto Mechanics", "Wood Technology", "Metalwork", 
+      "Fashion and Textiles", "Catering and Hospitality", "Tourism", "Secretarial Studies", "Accounting", "Marketing", "Entrepreneurship", 
+      "Fisheries", "Forestry", "Environmental Science", "Religious Studies", "Physical Education", "Music", "Dance", "Theatre Arts",
+      "Medicine", "Dentistry", "Pharmacy", "Nursing", "Public Health", "Biomedical Science", "Allied Health Sciences", "Law", "Political Science", 
+      "International Relations", "Public Administration", "Economics", "Sociology", "Psychology", "Social Work", "Geography", "Linguistics", "English", "History", 
+      "Philosophy", "Religious Studies", "Theatre Arts", "Music", "Dance", "Fine Arts", "Graphic Design", "Industrial Art", "Architecture", "Planning", "Civil Engineering", 
+      "Mechanical Engineering", "Electrical and Electronic Engineering", "Computer Engineering", "Biomedical Engineering", "Agricultural Engineering", "Petroleum Engineering", 
+      "Chemical Engineering", "Materials Engineering", "Computer Science", "Information Technology", "Information Systems", "Cyber Security", "Data Science", 
+      "Artificial Intelligence", "Mathematics", "Statistics", "Actuarial Science", "Physics", "Chemistry", "Biochemistry", "Biological Sciences", "Environmental Science", 
+      "Marine Science", "Agriculture", "Agribusiness", "Animal Science", "Crop Science", "Soil Science", "Forestry", "Fisheries", "Food Science", "Nutrition", 
+      "Hospitality Management", "Tourism Management", "Business Administration", "Accounting", "Finance", "Banking", "Marketing", "Human Resource Management", 
+      "Supply Chain Management", "Entrepreneurship", "Procurement", "Project Management", 
+      "Education", "Basic Education", "Early Childhood Education", "Special Education", "Guidance and Counselling", "Educational Administration", "Sports Science"
     ];
 
     const difficulties = [
