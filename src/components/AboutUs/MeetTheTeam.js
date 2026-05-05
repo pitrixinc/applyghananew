@@ -5,25 +5,25 @@ import { motion } from "framer-motion";
 const teamMembers = [
   {
     id: 1,
-    name: "John Doe",
+    name: "Richard Akuffo Addo",
     role: "CEO & Founder",
-    image: "https://media.licdn.com/dms/image/v2/D4D03AQGwtpaR5hw7pA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1730767714559?e=2147483647&v=beta&t=mvzNX1MP7aWfRCSskck7Sl9IM9D8PWpL_Wu57qkx5fc", // Replace with actual image
-    bio: "John is the visionary behind ApplyGhana. With 10+ years in document processing and application services, he leads the team with expertise and passion.",
+    image: "/images/ceo.png", // Replace with actual image
+    bio: "Richard is the visionary behind ApplyGhana. With 10+ years in document processing and application services, he leads the team with expertise and passion.",
     linkedin: "#",
-    twitter: "#",
-    email: "mailto:johndoe@example.com",
+    twitter: "https://x.com/iamalibrah",
+    email: "mailto:richardchardakuffoaddo19@gmail.com",
   },
   {
     id: 2,
     name: "Jane Smith",
     role: "Operations Manager",
-    image: "https://media.licdn.com/dms/image/v2/C4E03AQG4RvdwwpWdAw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1650624989607?e=2147483647&v=beta&t=rmtpZN3XCd14wvZN645hAMIB3X_2rI-cpMJg3OZ935U",
+    image: "/images/jane.jpg",
     bio: "Jane oversees daily operations, ensuring smooth and efficient service delivery. Her experience in customer service and management is unmatched.",
     linkedin: "#",
     twitter: "#",
     email: "mailto:janesmith@example.com",
   },
-  {
+ /* {
     id: 3,
     name: "Michael Johnson",
     role: "Lead Consultant",
@@ -42,7 +42,7 @@ const teamMembers = [
     linkedin: "#",
     twitter: "#",
     email: "mailto:sarah@example.com",
-  },
+  }, */
 ];
 
 const MeetTheTeam = () => {
@@ -65,7 +65,7 @@ const MeetTheTeam = () => {
         </p>
 
         {/* Team Grid */}
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-center justify-center text-center">
           {teamMembers.map((member) => (
             <motion.div 
               key={member.id} 
